@@ -1,10 +1,13 @@
 package client.presentation.panels;
 
+import client.SDK.model.Score;
+
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Highscore extends JPanel
 {
@@ -22,22 +25,10 @@ public class Highscore extends JPanel
 		setSize(700, 440);
 		setLayout(null);
 
-		String dat[][] = new String[1][5];
-		dat[0][0] = "overskrives";
-		dat[0][1] = "overskrives";
-		tableShowHighscore = new JTable(new DefaultTableModel(dat, new String[]
-						{ "UserID", "TotalScore"}))
-		{
-			private static final long serialVersionUID = 1L;
+		tableShowHighscore = new JTable();
 
-			public boolean isCellEditable(int row, int coloumn)
-			{
-				return false;
-			}
-		};
 		showTableScrollpane = new JScrollPane(tableShowHighscore);
-		showTableScrollpane
-		.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		showTableScrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		showTableScrollpane.setBounds(10, 133, 663, 188);
 		add(showTableScrollpane);
 
@@ -65,8 +56,64 @@ public class Highscore extends JPanel
 		return btnBack;
 	}
 
-	public JTable getTableShowHighscore()
+	public void setTableshowHighscore(ArrayList<Score> scores){
+		HighscoreTableModel highscoreTableModel = new HighscoreTableModel(scores);
+		tableShowHighscore.setModel(highscoreTableModel);
+	}
+
+	private class HighscoreTableModel extends AbstractTableModel
 	{
-		return tableShowHighscore;
+		private static final long serialVersionUID = 1L;
+		public static final int USERNAME = 0;
+		public static final int SCORE = 1;
+		public static final int GAME_ID = 2;
+
+		private ArrayList<Score> highscores;
+		private String[] columns = {"USERNAME", "SCORE", "GAME ID"};
+		private int numberOfRows;
+
+		public HighscoreTableModel(ArrayList<Score> highscores)
+		{
+			this.highscores = highscores;
+			fireTableStructureChanged();
+		}
+
+		@Override
+		public int getColumnCount() {
+			return columns.length;
+		}
+
+		@Override
+		public Class<?> getColumnClass(int columnIndex) {
+			return super.getColumnClass(columnIndex);
+		}
+
+		@Override
+		public int getRowCount() {
+			numberOfRows = highscores.size();
+			return numberOfRows;
+		}
+
+		public String getColumnName(int columnIndex) {
+
+			return columns[columnIndex];
+
+		}
+
+		@Override
+		public Object getValueAt(int rowIndex, int columnIndex) {
+			switch (columnIndex) {
+
+				case USERNAME:
+					return highscores.get(rowIndex).getGame().getWinner().getUsername();
+				case SCORE:
+					return highscores.get(rowIndex).getScore();
+				case GAME_ID:
+					return highscores.get(rowIndex).getGame().getGameId();
+
+			}
+			return null;
+		}
+
 	}
 }

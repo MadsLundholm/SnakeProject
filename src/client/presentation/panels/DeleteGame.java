@@ -26,18 +26,18 @@ public class DeleteGame extends JPanel
 		btnBack.setBounds(10, 332, 83, 23);
 		add(btnBack);
 
-		btnDeleteGame = new JButton("DELETE SELECTED GAME");
-		btnDeleteGame.setBounds(464, 332, 210, 23);
+		btnDeleteGame = new JButton("DELETE GAME");
+		btnDeleteGame.setBounds(320, 231, 168, 23);
 		add(btnDeleteGame);
 
 		lblDeleteGame = new JLabel("DELETE GAME");
 		lblDeleteGame.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblDeleteGame.setForeground(Color.LIGHT_GRAY);
-		lblDeleteGame.setBounds(231, 342, 69, 14);
+		lblDeleteGame.setBounds(162, 196, 95, 14);
 		add(lblDeleteGame);
 
 		comboBoxDeleteGame = new JComboBox();
-		comboBoxDeleteGame.setBounds(278, 291, 211, 34);
+		comboBoxDeleteGame.setBounds(278, 186, 211, 34);
 		add(comboBoxDeleteGame);
 
 		imageBackground = new ImageIcon(getClass().getResource("/client/presentation/imgSrc/deleteGame.jpg"));

@@ -47,12 +47,12 @@ public class CreateGame extends JPanel  {
 		lblControls = new JLabel("CONTROLS");
 		lblControls.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblControls.setForeground(Color.LIGHT_GRAY);
-		lblControls.setBounds(158, 253, 95, 20);
+		lblControls.setBounds(143, 253, 110, 20);
 		add(lblControls);
 
 		lblMapSize = new JLabel("MAPSIZE");
 		lblMapSize.setFont(new Font("Calibri", Font.BOLD, 15));
-		lblMapSize.setBounds(158, 208, 95, 20);
+		lblMapSize.setBounds(143, 208, 110, 20);
 		lblMapSize.setForeground(Color.LIGHT_GRAY);
 		add(lblMapSize);
 
@@ -64,7 +64,7 @@ public class CreateGame extends JPanel  {
 
 		lblGameName = new JLabel("GAMENAME");
 		lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
-		lblGameName.setBounds(158, 166, 95, 20);
+		lblGameName.setBounds(143, 163, 110, 20);
 		lblGameName.setForeground(Color.LIGHT_GRAY);
 		add(lblGameName);
 
@@ -73,7 +73,7 @@ public class CreateGame extends JPanel  {
 		lblOpponentId = new JLabel("OPPONENT NAME");
 		lblOpponentId.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblOpponentId.setForeground(Color.LIGHT_GRAY);
-		lblOpponentId.setBounds(158, 298, 95, 20);
+		lblOpponentId.setBounds(143, 298, 125, 20);
 		add(lblOpponentId);
 
 		comboBoxChooseOpponent = new JComboBox();
@@ -83,7 +83,6 @@ public class CreateGame extends JPanel  {
 		lblBackground = new JLabel(imageBackground);
 		lblBackground.setBounds(0, 0, 684, 402);
 		add(lblBackground);
-
 	}
 
 	public void addActionListener(ActionListener l) {
@@ -103,7 +102,6 @@ public class CreateGame extends JPanel  {
 	public String getSelectedUser(){
 		return (String) comboBoxChooseOpponent.getSelectedItem();
 	}
-
 
 	public JComboBox getComboBoxMapSize() {return comboBoxMapSize;}
 

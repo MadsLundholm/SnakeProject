@@ -4,6 +4,7 @@ package client.controller;
 import client.SDK.SDKController;
 import client.SDK.model.Game;
 import client.SDK.model.Gamer;
+import client.SDK.model.Score;
 import client.SDK.model.User;
 import client.presentation.Screen;
 
@@ -18,6 +19,7 @@ public class Controller {
 	private User currentUser;
 	private ArrayList<User> users;
 	private ArrayList<Game> games;
+	private ArrayList<Score> showHighscores;
 
 	public Controller() {
 		screen = new Screen();
@@ -88,6 +90,7 @@ public class Controller {
 			}
 			else if (e.getSource() == screen.getUserMenu().getBtnHighscore())
 			{
+				//screen.getHighscore().setTableshowHighscore(sdkController.getHighscores());
 				screen.show(Screen.HIGHSCORE);
 			}
 			else if (e.getSource() == screen.getUserMenu().getBtnLogOff())

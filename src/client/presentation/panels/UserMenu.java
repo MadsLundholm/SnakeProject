@@ -20,7 +20,7 @@ public class UserMenu extends JPanel {
 
 		btnLogOff = new JButton("LOG OFF");
 		btnLogOff.setFont(new Font("Calibri", Font.PLAIN, 13));
-		btnLogOff.setBounds(299, 277, 79, 30);
+		btnLogOff.setBounds(289, 276, 101, 30);
 		add(btnLogOff);
 
 		btnHighscore = new JButton("HIGHSCORE");
