@@ -11,16 +11,16 @@ public class UserMenu extends JPanel {
 	private JButton btnLogOff;
 	private JButton btnDeleteGame;
 	private JButton btnHighscore;
-	private JButton btnInstructions;
-	private JButton btnPlay;
+	private JButton btnJoinGame;
+	private JButton btnCreateGame;
 
 	public UserMenu() {
-		setSize(700,440);
+		setSize(700, 400);
 		setLayout(null);
 
 		btnLogOff = new JButton("LOG OFF");
 		btnLogOff.setFont(new Font("Calibri", Font.PLAIN, 13));
-		btnLogOff.setBounds(298, 276, 84, 32);
+		btnLogOff.setBounds(299, 277, 79, 30);
 		add(btnLogOff);
 
 		btnHighscore = new JButton("HIGHSCORE");
@@ -28,22 +28,23 @@ public class UserMenu extends JPanel {
 		btnHighscore.setBounds(173, 223, 161, 42);
 		add(btnHighscore);
 
-		btnInstructions = new JButton("INSTRUCTIONS");
-		btnInstructions.setFont(new Font("Calibri", Font.PLAIN, 13));
-		btnInstructions.setBounds(344, 223, 161, 42);
-		add(btnInstructions);
-
-		btnPlay = new JButton("START GAME");
-		btnPlay.setFont(new Font("Calibri", Font.PLAIN, 13));
-		btnPlay.setBounds(173, 170, 161, 42);
-		add(btnPlay);
+		btnJoinGame = new JButton("JOIN GAME");
+		btnJoinGame.setFont(new Font("Calibri", Font.PLAIN, 13));
+		btnJoinGame.setBounds(173, 170, 161, 42);
+		add(btnJoinGame);
 
 		btnDeleteGame = new JButton("DELETE GAME");
-		btnDeleteGame.setBounds(344, 170, 161, 42);
+		btnDeleteGame.setBounds(344, 223, 161, 42);
 		btnDeleteGame.setFont(new Font("Calibri", Font.PLAIN, 13));
 		add(btnDeleteGame);
 
 		imageBackground = new ImageIcon(getClass().getResource("/client/presentation/imgSrc/userMenu.jpg"));
+
+		btnCreateGame = new JButton("CREATE GAME");
+		btnCreateGame.setFont(new Font("Calibri", Font.PLAIN, 13));
+		btnCreateGame.setBounds(344, 170, 161, 42);
+		add(btnCreateGame);
+
 		lblBackground = new JLabel(imageBackground);
 		lblBackground.setBounds(0, 0, 684, 402);
 		add(lblBackground);
@@ -52,30 +53,21 @@ public class UserMenu extends JPanel {
 	public void addActionListener(ActionListener l) 
 	{
 		btnLogOff.addActionListener(l);
-		btnPlay.addActionListener(l);
 		btnDeleteGame.addActionListener(l);
 		btnHighscore.addActionListener(l);
-		btnInstructions.addActionListener(l);
+		btnJoinGame.addActionListener(l);
+		btnCreateGame.addActionListener(l);
 	}
 
-	public JButton getBtnLogOff() {
-		return btnLogOff;
-	}
-
-	public JButton getBtnPlay() {
-		return btnPlay;
-	}
+	public JButton getBtnLogOff() {return btnLogOff;}
 
 	public JButton getBtnDeleteGame() {
 		return btnDeleteGame;
 	}
 
-	public JButton getBtnHighscore() {
-		return btnHighscore;
-	}
+	public JButton getBtnHighscore() {return btnHighscore;}
 
-	public JButton getBtnInstructions() {
-		return btnInstructions;
-	}
+	public JButton getBtnCreateGame() {return btnCreateGame;}
 
+	public JButton getBtnJoinGame() {return btnJoinGame;}
 }

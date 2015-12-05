@@ -1,10 +1,9 @@
 package client.SDK.model;
 
-
 import java.sql.Date;
 
 /**
- * Created by Mads Lundholm on 12-10-2015.
+ * Created by Mads Lundholm on 23/11 2015
  */
 
 public class Game {
@@ -15,7 +14,7 @@ public class Game {
     private Gamer host;
     private Gamer opponent;
     private String status;
-    private java.sql.Date created;
+    private Date created;
     private int mapSize;
 
     public Game(){}
@@ -44,6 +43,7 @@ public class Game {
         this.name = name;
     }
 
+    //Creating get/set method for all the variables, so they can be used by other classes
     public int getGameId(){
         return gameId;
     }
@@ -56,7 +56,9 @@ public class Game {
         return host;
     }
 
-    public void setHost(Gamer host){this.host = host;}
+    public void setHost(Gamer host){
+        this.host = host;
+    }
 
     public Gamer getOpponent(){
         return opponent;
@@ -81,6 +83,4 @@ public class Game {
     public void setWinner(Gamer winner) {
         this.winner = winner;
     }
-
-
 } //end of class

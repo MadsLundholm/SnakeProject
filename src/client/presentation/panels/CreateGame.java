@@ -3,6 +3,7 @@ package client.presentation.panels;
 import client.SDK.model.User;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -13,7 +14,6 @@ public class CreateGame extends JPanel  {
 	private JButton btnBack;
 	private JButton btnCreateGame;
 	private JTextField txtGameName;
-	private JTextField txtMapSize;
 	private JLabel lblGameName;
 	private JLabel lblControls;
 	private JTextField txtControls;
@@ -67,13 +67,13 @@ public class CreateGame extends JPanel  {
 		lblOpponentId.setBounds(158, 298, 95, 20);
 		add(lblOpponentId);
 
-		txtOpponentId = new JTextField();
+		/*txtOpponentId = new JTextField();
 		txtOpponentId.setBounds(278, 291, 211, 34);
-		add(txtOpponentId);
+		add(txtOpponentId);*/
 
-		/*comboBoxChooseOpponent = new JComboBox();
+		comboBoxChooseOpponent = new JComboBox();
 		comboBoxChooseOpponent.setBounds(278, 291, 211, 34);
-		add(comboBoxChooseOpponent);*/
+		add(comboBoxChooseOpponent);
 
 		lblBackground = new JLabel(imageBackground);
 		lblBackground.setBounds(0, 0, 684, 402);
@@ -84,6 +84,11 @@ public class CreateGame extends JPanel  {
 	public void addActionListener(ActionListener l) {
 		btnBack.addActionListener(l);
 		btnCreateGame.addActionListener(l);
+	}
+
+	public void actionPerfomed(ActionEvent e)
+	{
+		comboBoxMapSize.actionPerformed(e);
 	}
 
 	public void setUserInComboBox(ArrayList<User> users)
@@ -98,6 +103,7 @@ public class CreateGame extends JPanel  {
 	public String getSelectedUSer(){
 		return (String) comboBoxChooseOpponent.getSelectedItem();
 	}
+
 
 	public JComboBox getComboBoxMapSize() {
 		return comboBoxMapSize;
@@ -122,8 +128,6 @@ public class CreateGame extends JPanel  {
 	public JTextField getTxtOpponentId() {
 		return txtOpponentId;
 	}
-
-	public JTextField getTxtMapSize() {return txtMapSize;}
 
 	public JTextField getTxtControls() {return txtControls;}
 }

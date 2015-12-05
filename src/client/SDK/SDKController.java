@@ -70,7 +70,7 @@ public class SDKController {
         return hashMap.get("message");
     }
 
-   public String startGame(Game startGame) {
+    public String startGame(Game startGame) {
         String data = serverConnection.put(new Gson().toJson(startGame), "games/start");
         HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
 
@@ -88,7 +88,7 @@ public class SDKController {
         }
     }
 
-   public ArrayList<Game> getGames(int userID) {
+    public ArrayList<Game> getGames(int userID) {
         String data = serverConnection.get("games/pending/" + userID);
         return new Gson().fromJson(data, new TypeToken<ArrayList<Game>>() {
         }.getType());
@@ -101,10 +101,10 @@ public class SDKController {
     }
 
 
-   public String deleteGame(int deleteGame) {
+    public String deleteGame(int deleteGame) {
         String data = serverConnection.delete("games/" + deleteGame);
         HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
 
-            return hashMap.get("message");
+        return hashMap.get("message");
     }
 }

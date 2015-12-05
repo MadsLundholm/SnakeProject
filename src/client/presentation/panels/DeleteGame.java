@@ -8,7 +8,7 @@ public class DeleteGame extends JPanel
 {
 	private static final long serialVersionUID = 1496674849914571382L;
 	private JLabel lblBackground;
-	private ImageIcon imageBackground; 
+	private ImageIcon imageBackground;
 	private JButton btnDeleteGame;
 	private JButton btnBack;
 	private JTableHeader tableHeader;
@@ -16,7 +16,7 @@ public class DeleteGame extends JPanel
 	private JTable tableDeleteGame;
 	private JTextField txtDeleteGame;
 	private JLabel lblDeleteGame;
-	
+
 	public DeleteGame ()
 	{
 		setSize(700, 440);
@@ -70,9 +70,9 @@ public class DeleteGame extends JPanel
 		lblBackground = new JLabel(imageBackground);
 		lblBackground.setBounds(0, 0, 684, 402);
 		add(lblBackground);
-	}	
-	
-	public void addActionListener(ActionListener l) 
+	}
+
+	public void addActionListener(ActionListener l)
 	{
 		btnBack.addActionListener(l);
 		btnDeleteGame.addActionListener(l);

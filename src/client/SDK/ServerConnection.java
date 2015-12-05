@@ -54,10 +54,10 @@ public class ServerConnection {
         WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
         ClientResponse clientResponse = webResource.type("application/json").post(ClientResponse.class, json);
 
-    String output = clientResponse.getEntity(String.class);
+        String output = clientResponse.getEntity(String.class);
 
-    return output;
-}
+        return output;
+    }
     // delete is a HTTP write-method used to delete data
     public String delete (String path){
 

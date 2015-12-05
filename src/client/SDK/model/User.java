@@ -1,6 +1,7 @@
 package client.SDK.model;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 /**
  * Created by Mads Lundholm on 25-11-2015.
@@ -21,8 +22,6 @@ public class User {
     public User () {}
 
     //creating get and set method for all the variables, so they can be used by other classes
-
-
     public int getId() {
         return id;
     }
