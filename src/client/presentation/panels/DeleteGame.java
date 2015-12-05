@@ -13,7 +13,6 @@ public class DeleteGame extends JPanel
 	private ImageIcon imageBackground;
 	private JButton btnDeleteGame;
 	private JButton btnBack;
-	private JTextField txtDeleteGame;
 	private JLabel lblDeleteGame;
 	private JComboBox comboBoxDeleteGame;
 
@@ -29,11 +28,6 @@ public class DeleteGame extends JPanel
 		btnDeleteGame = new JButton("DELETE SELECTED GAME");
 		btnDeleteGame.setBounds(464, 332, 210, 23);
 		add(btnDeleteGame);
-
-		txtDeleteGame = new JTextField();
-		txtDeleteGame.setColumns(10);
-		txtDeleteGame.setBounds(310, 333, 161, 34);
-		add(txtDeleteGame);
 
 		lblDeleteGame = new JLabel("DELETE GAME");
 		lblDeleteGame.setBounds(231, 342, 69, 14);
@@ -55,7 +49,8 @@ public class DeleteGame extends JPanel
 		btnDeleteGame.addActionListener(l);
 	}
 
-	public void setGamesInComboBox(ArrayList<Game> games){
+	public void setGamesInComboBox(ArrayList<Game> games)
+	{
 		comboBoxDeleteGame.removeAllItems();
 		for (Game g: games)
 		{
@@ -75,13 +70,5 @@ public class DeleteGame extends JPanel
 	public JButton getBtnBack()
 	{
 		return btnBack;
-	}
-
-	public JTextField getTxtDeleteGame() {
-		return txtDeleteGame;
-	}
-
-	public JComboBox getComboBoxDeleteGame() {
-		return comboBoxDeleteGame;
 	}
 }

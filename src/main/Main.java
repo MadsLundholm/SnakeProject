@@ -23,7 +23,7 @@ public class Main {
         //running client
         Controller controller = new Controller();
         controller.run();
-        //running server
+       //running server
         Tui.serverMenu();
 
         System.out.println("Hit return to confirm to stop...");

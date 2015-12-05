@@ -96,7 +96,8 @@ public class JoinGame extends JPanel
 		btnJoinGame.addActionListener(l);
 	}
 
-	public void setGamesInComboBox(ArrayList<Game> games){
+	public void setGamesInComboBox(ArrayList<Game> games)
+	{
 		comboBox.removeAllItems();
 		for (Game g: games)
 		{

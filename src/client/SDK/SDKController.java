@@ -53,17 +53,7 @@ public class SDKController {
         return hashMap.get("message");
     }
 
-    public static void deleteUser(int userId){
-
-    }
-    public static void getUser(int userId){
-    }
-    public static void getGame(int gameId){
-
-    }
-
-    public String joinGame(Game startGame)
-    {
+    public String joinGame(Game startGame) {
         String data = serverConnection.put(new Gson().toJson(startGame), "games/join");
         HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
 
@@ -75,14 +65,11 @@ public class SDKController {
         HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
 
         if (hashMap.get("message") != null)
-        {
             return hashMap.get("message");
-        }
-
-        else
-        {
+        else {
             Game g = new Gson().fromJson(data, Game.class);
             startGame.setWinner(g.getWinner());
+            System.out.println(g.getName());
             return startGame.getWinner().getId()+ "";
         }
     }
