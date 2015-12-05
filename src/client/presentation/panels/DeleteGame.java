@@ -1,8 +1,10 @@
 package client.presentation.panels;
 
+import client.SDK.model.Game;
+
 import javax.swing.*;
-import javax.swing.table.JTableHeader;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class DeleteGame extends JPanel
 {
@@ -11,47 +13,18 @@ public class DeleteGame extends JPanel
 	private ImageIcon imageBackground;
 	private JButton btnDeleteGame;
 	private JButton btnBack;
-	private JTableHeader tableHeader;
-	private JScrollPane showTableScrollpane;
-	private JTable tableDeleteGame;
 	private JTextField txtDeleteGame;
 	private JLabel lblDeleteGame;
+	private JComboBox comboBoxDeleteGame;
 
 	public DeleteGame ()
 	{
 		setSize(700, 440);
 		setLayout(null);
 
-		/*String dat[][] = new String[1][8];
-		dat[0][0] = "";
-		dat[0][1] = "";
-		dat[0][2] = "";
-		dat[0][3] = "";
-		dat[0][4] = "";
-		dat[0][5] = "";
-		dat[0][6] = "";
-		dat[0][7] = "";
-
-		tableDeleteGame = new JTable(new DefaultTableModel(dat, new String[]
-				{ "GameId", "Winner", "Name", "Host", "Opponent", "Status", "Created", "MapSize"}))
-		{
-			public boolean isCellEditable(int row, int coloumn)
-			{
-				return false;
-			}
-		};
-		showTableScrollpane = new JScrollPane(tableDeleteGame);
-		showTableScrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		showTableScrollpane.setBounds(10, 133, 663, 188);
-		add(showTableScrollpane);*/
-
 		btnBack = new JButton("BACK");
 		btnBack.setBounds(10, 332, 83, 23);
 		add(btnBack);
-
-		/*tableHeader = tableDeleteGame.getTableHeader();
-		tableHeader.setForeground(Color.WHITE);
-		tableHeader.setBackground(Color.BLACK);*/
 
 		btnDeleteGame = new JButton("DELETE SELECTED GAME");
 		btnDeleteGame.setBounds(464, 332, 210, 23);
@@ -66,6 +39,10 @@ public class DeleteGame extends JPanel
 		lblDeleteGame.setBounds(231, 342, 69, 14);
 		add(lblDeleteGame);
 
+		comboBoxDeleteGame = new JComboBox();
+		comboBoxDeleteGame.setBounds(278, 291, 211, 34);
+		add(comboBoxDeleteGame);
+
 		imageBackground = new ImageIcon(getClass().getResource("/client/presentation/imgSrc/deleteGame.jpg"));
 		lblBackground = new JLabel(imageBackground);
 		lblBackground.setBounds(0, 0, 684, 402);
@@ -78,6 +55,18 @@ public class DeleteGame extends JPanel
 		btnDeleteGame.addActionListener(l);
 	}
 
+	public void setGamesInComboBox(ArrayList<Game> games){
+		comboBoxDeleteGame.removeAllItems();
+		for (Game g: games)
+		{
+			comboBoxDeleteGame.addItem(g.getName());
+		}
+	}
+
+	public String getSelectedGame(){
+		return (String) comboBoxDeleteGame.getSelectedItem();
+	}
+
 	public JButton getBtnDeleteGame()
 	{
 		return btnDeleteGame;
@@ -88,12 +77,11 @@ public class DeleteGame extends JPanel
 		return btnBack;
 	}
 
-	public JTable getTableDeleteGame()
-	{
-		return tableDeleteGame;
-	}
-
 	public JTextField getTxtDeleteGame() {
 		return txtDeleteGame;
+	}
+
+	public JComboBox getComboBoxDeleteGame() {
+		return comboBoxDeleteGame;
 	}
 }

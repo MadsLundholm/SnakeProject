@@ -41,7 +41,6 @@ public class ServerConnection {
         ClientResponse response = webResource.type("application/json").get(ClientResponse.class);
 
         String output = response.getEntity(String.class);
-        System.out.println(output);
 
         return output;
     }
@@ -67,7 +66,6 @@ public class ServerConnection {
         ClientResponse clientResponse = webResource.type("application/json").delete(ClientResponse.class);
 
         String output = clientResponse.getEntity(String.class);
-        System.out.println(output);
 
         return output;
     }

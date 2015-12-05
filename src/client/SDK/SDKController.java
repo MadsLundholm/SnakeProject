@@ -83,7 +83,6 @@ public class SDKController {
         {
             Game g = new Gson().fromJson(data, Game.class);
             startGame.setWinner(g.getWinner());
-            System.out.println(g.getName());
             return startGame.getWinner().getId()+ "";
         }
     }
@@ -96,7 +95,6 @@ public class SDKController {
 
     public ArrayList<User> getUsers() {
         String data = serverConnection.get("users/");
-        System.out.println(data);
         return new Gson().fromJson(data, new TypeToken<ArrayList<User>>() {}.getType());
     }
 

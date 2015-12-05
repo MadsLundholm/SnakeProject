@@ -112,6 +112,8 @@ public class Controller {
 				screen.show(Screen.JOINGAME);
 			} else if (e.getSource() == screen.getUserMenu().getBtnDeleteGame())
 			{
+				games = sdkController.getGames(currentUser.getId());
+				screen.getDeleteGame().setGamesInComboBox(games);
 				screen.show(Screen.DELETEGAME);}
 
 			else if (e.getSource() == screen.getUserMenu().getBtnCreateGame()) {
@@ -153,8 +155,14 @@ public class Controller {
 			else if (e.getSource() == screen.getDeleteGame().getBtnDeleteGame())
 			{
 				Game deleteGame = new Game();
-				deleteGame.setGameId(Integer.parseInt(screen.getDeleteGame().getTxtDeleteGame().getText()));
-
+				deleteGame.setName(screen.getDeleteGame().getSelectedGame());
+				for (Game g: games)
+				{
+					if (g.getName() == screen.getDeleteGame().getSelectedGame())
+					{
+						deleteGame = g;
+					}
+				}
 				String message = sdkController.deleteGame(deleteGame.getGameId());
 				JOptionPane.showMessageDialog(screen, message);
 			}

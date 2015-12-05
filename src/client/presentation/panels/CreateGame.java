@@ -67,10 +67,6 @@ public class CreateGame extends JPanel  {
 		lblOpponentId.setBounds(158, 298, 95, 20);
 		add(lblOpponentId);
 
-		/*txtOpponentId = new JTextField();
-		txtOpponentId.setBounds(278, 291, 211, 34);
-		add(txtOpponentId);*/
-
 		comboBoxChooseOpponent = new JComboBox();
 		comboBoxChooseOpponent.setBounds(278, 291, 211, 34);
 		add(comboBoxChooseOpponent);
