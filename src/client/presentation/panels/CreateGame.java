@@ -3,7 +3,7 @@ package client.presentation.panels;
 import client.SDK.model.User;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -17,9 +17,10 @@ public class CreateGame extends JPanel  {
 	private JLabel lblGameName;
 	private JLabel lblControls;
 	private JTextField txtControls;
-	private JTextField txtOpponentId;
 	private JComboBox comboBoxMapSize;
 	private JComboBox comboBoxChooseOpponent;
+	private JLabel lblMapSize;
+	private JLabel lblOpponentId;
 
 	public CreateGame() {
 		setSize(700, 440);
@@ -44,11 +45,15 @@ public class CreateGame extends JPanel  {
 		add(txtControls);
 
 		lblControls = new JLabel("CONTROLS");
+		lblControls.setFont(new Font("Calibri", Font.BOLD, 15));
+		lblControls.setForeground(Color.LIGHT_GRAY);
 		lblControls.setBounds(158, 253, 95, 20);
 		add(lblControls);
 
-		JLabel lblMapSize = new JLabel("MAPSIZE");
+		lblMapSize = new JLabel("MAPSIZE");
+		lblMapSize.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblMapSize.setBounds(158, 208, 95, 20);
+		lblMapSize.setForeground(Color.LIGHT_GRAY);
 		add(lblMapSize);
 
 		Integer [] mapSize = {10, 15, 20, 25};
@@ -58,12 +63,16 @@ public class CreateGame extends JPanel  {
 		add(comboBoxMapSize);
 
 		lblGameName = new JLabel("GAMENAME");
+		lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblGameName.setBounds(158, 166, 95, 20);
+		lblGameName.setForeground(Color.LIGHT_GRAY);
 		add(lblGameName);
 
 		imageBackground = new ImageIcon(getClass().getResource("/client/presentation/imgSrc/createGame.jpg"));
 
-		JLabel lblOpponentId = new JLabel("OPPONENT ID");
+		lblOpponentId = new JLabel("OPPONENT NAME");
+		lblOpponentId.setFont(new Font("Calibri", Font.BOLD, 15));
+		lblOpponentId.setForeground(Color.LIGHT_GRAY);
 		lblOpponentId.setBounds(158, 298, 95, 20);
 		add(lblOpponentId);
 
@@ -82,11 +91,6 @@ public class CreateGame extends JPanel  {
 		btnCreateGame.addActionListener(l);
 	}
 
-	public void actionPerfomed(ActionEvent e)
-	{
-		comboBoxMapSize.actionPerformed(e);
-	}
-
 	public void setUserInComboBox(ArrayList<User> users)
 	{
 		comboBoxChooseOpponent.removeAllItems();
@@ -96,18 +100,12 @@ public class CreateGame extends JPanel  {
 		}
 	}
 
-	public String getSelectedUSer(){
+	public String getSelectedUser(){
 		return (String) comboBoxChooseOpponent.getSelectedItem();
 	}
 
 
-	public JComboBox getComboBoxMapSize() {
-		return comboBoxMapSize;
-	}
-
-	public JComboBox getComboBoxChooseOpponent() {
-		return comboBoxChooseOpponent;
-	}
+	public JComboBox getComboBoxMapSize() {return comboBoxMapSize;}
 
 	public JButton getBtnBack() {
 		return btnBack;
@@ -119,10 +117,6 @@ public class CreateGame extends JPanel  {
 
 	public JTextField getTxtGameName() {
 		return txtGameName;
-	}
-
-	public JTextField getTxtOpponentId() {
-		return txtOpponentId;
 	}
 
 	public JTextField getTxtControls() {return txtControls;}

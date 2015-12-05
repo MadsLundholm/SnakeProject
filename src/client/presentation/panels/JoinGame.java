@@ -15,12 +15,13 @@ public class JoinGame extends JPanel
 	private ImageIcon imageBackground;
 	private JButton btnBack;
 	private JButton btnJoinGame;
-	private JTextField txtGameId;
 	private JTable tableShowJoinGame;
 	private JScrollPane showTableScrollpane;
 	private JTableHeader tableHeader;
 	private JTextField txtControl;
-	private JComboBox comboBox;
+	private JComboBox comboBoxJoinGame;
+	private JLabel lblGameName;
+	private JLabel lblControls;
 
 	public JoinGame()
 	{
@@ -54,14 +55,9 @@ public class JoinGame extends JPanel
 		tableHeader.setForeground(Color.WHITE);
 		tableHeader.setBackground(Color.BLACK);
 
-		comboBox = new JComboBox();
-		comboBox.setBounds(310, 288, 161, 34);
-		add(comboBox);
-
-		/*txtGameId = new JTextField();
-		txtGameId.setColumns(10);
-		txtGameId.setBounds(310, 288, 161, 34);
-		add(txtGameId);*/
+		comboBoxJoinGame = new JComboBox();
+		comboBoxJoinGame.setBounds(310, 288, 161, 34);
+		add(comboBoxJoinGame);
 
 		btnBack = new JButton("BACK");
 		btnBack.setBounds(10, 374, 83, 23);
@@ -78,11 +74,15 @@ public class JoinGame extends JPanel
 		txtControl.setBounds(310, 333, 161, 34);
 		add(txtControl);
 
-		JLabel lblGameid = new JLabel("GameID");
-		lblGameid.setBounds(231, 297, 69, 14);
-		add(lblGameid);
+		lblGameName = new JLabel("GAME NAME");
+		lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
+		lblGameName.setForeground(Color.LIGHT_GRAY);
+		lblGameName.setBounds(231, 297, 69, 14);
+		add(lblGameName);
 
-		JLabel lblControls = new JLabel("Controls");
+		lblControls = new JLabel("CONTROLS");
+		lblControls.setFont(new Font("Calibri", Font.BOLD, 15));
+		lblControls.setForeground(Color.LIGHT_GRAY);
 		lblControls.setBounds(231, 342, 69, 14);
 		add(lblControls);
 
@@ -96,34 +96,29 @@ public class JoinGame extends JPanel
 		btnJoinGame.addActionListener(l);
 	}
 
-	public void setGamesInComboBox(ArrayList<Game> games)
-	{
-		comboBox.removeAllItems();
+	public void setGamesInComboBox(ArrayList<Game> games){
+		comboBoxJoinGame.removeAllItems();
 		for (Game g: games)
 		{
-			comboBox.addItem(g.getName());
+			comboBoxJoinGame.addItem(g.getName());
 		}
 	}
 
 	public String getSelectedGame(){
-		return (String) comboBox.getSelectedItem();
+		return (String) comboBoxJoinGame.getSelectedItem();
 	}
 
 	public JButton getBtnBack() {
 		return btnBack;
 	}
 
-	public JButton getBtnJoinGame() {
-		return btnJoinGame;
-	}
-
-	public JTextField getTxtGameId() {return txtGameId;}
+	public JButton getBtnJoinGame() {return btnJoinGame;}
 
 	public JTextField getTxtControl() {
 		return txtControl;
 	}
 
-	public JComboBox getComboBox() {
-		return comboBox;
+	public JComboBox getComboBoxJoinGame() {
+		return comboBoxJoinGame;
 	}
 }

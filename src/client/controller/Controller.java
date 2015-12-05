@@ -116,12 +116,12 @@ public class Controller {
 					Game createGame = new Game();
 					createGame.setName(screen.getCreateGame().getTxtGameName().getText());
 					createGame.setMapSize((Integer) screen.getCreateGame().getComboBoxMapSize().getSelectedItem());
-					createGame.setName(screen.getCreateGame().getSelectedUSer());
+					createGame.setName(screen.getCreateGame().getSelectedUser());
 
 					Gamer opponent = new Gamer();
 					for (User u: users)
 					{
-						if (u.getUsername() == screen.getCreateGame().getSelectedUSer())
+						if (u.getUsername() == screen.getCreateGame().getSelectedUser())
 						{
 							opponent.setId(u.getId());
 						}

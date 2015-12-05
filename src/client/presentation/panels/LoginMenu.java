@@ -10,31 +10,34 @@ public class LoginMenu extends JPanel {
 	private ImageIcon imageBackground; 
 	private JLabel lblPassword;
 	private JLabel lblUserName;
-	private JPasswordField password;
-	private JTextField email;
+	private JPasswordField txtPassword;
+	private JTextField txtEmail;
 	private JButton btnLogin;
 
 	public LoginMenu() {
+		setSize(700,400);
 		setLayout(null);
 
 		lblUserName = new JLabel("USERNAME");
-		lblUserName.setFont(new Font("Calibri", Font.BOLD, 13));
+		lblUserName.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblUserName.setBounds(224, 148, 126, 75);
+		lblUserName.setForeground(Color.LIGHT_GRAY);
 		add(lblUserName);
 
 		lblPassword = new JLabel("PASSWORD");
-		lblPassword.setFont(new Font("Calibri", Font.BOLD, 13));
+		lblPassword.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblPassword.setBounds(224, 190, 126, 75);
+		lblPassword.setForeground(Color.LIGHT_GRAY);
 		add(lblPassword);
 
-		email = new JTextField();
-		email.setBounds(318, 174, 140, 25);
-		email.setColumns(10);
-		add(email);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(318, 174, 140, 25);
+		txtEmail.setColumns(10);
+		add(txtEmail);
 
-		password = new JPasswordField();
-		password.setBounds(318, 216, 140, 25);
-		add(password);
+		txtPassword = new JPasswordField();
+		txtPassword.setBounds(318, 216, 140, 25);
+		add(txtPassword);
 
 		btnLogin = new JButton("LOGIN");
 		btnLogin.setBounds(345, 252, 113, 23);
@@ -47,10 +50,10 @@ public class LoginMenu extends JPanel {
 	}
 	
 	public JTextField getTxtUserName() {
-		return email;
+		return txtEmail;
 	}
 
-	public JTextField getTxtPassword() {return password;}
+	public JTextField getTxtPassword() {return txtPassword;}
 
 	public JButton getBtnLogin() {
 		return btnLogin;

@@ -3,6 +3,7 @@ package client.presentation.panels;
 import client.SDK.model.Game;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class DeleteGame extends JPanel
 		add(btnDeleteGame);
 
 		lblDeleteGame = new JLabel("DELETE GAME");
+		lblDeleteGame.setFont(new Font("Calibri", Font.BOLD, 15));
+		lblDeleteGame.setForeground(Color.LIGHT_GRAY);
 		lblDeleteGame.setBounds(231, 342, 69, 14);
 		add(lblDeleteGame);
 
