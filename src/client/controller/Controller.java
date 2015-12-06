@@ -127,18 +127,27 @@ public class Controller {
 						if (u.getUsername() == screen.getCreateGame().getSelectedUser())
 						{
 							opponent.setId(u.getId());
+							if (opponent.getId() == currentUser.getId()){
+								JOptionPane.showMessageDialog(screen, "Du kan ikke spille mod dig selv");
+								screen.show(Screen.USERMENU);
+							}
+
+							else
+							{
+								createGame.setOpponent(opponent);
+
+								Gamer host = new Gamer();
+								host.setId(currentUser.getId());
+								host.setControls(screen.getCreateGame().getTxtControls().getText());
+								createGame.setHost(host);
+
+								String createGameMessage = sdkController.createGame(createGame);
+
+								JOptionPane.showMessageDialog(screen, createGameMessage, "Game created", JOptionPane.INFORMATION_MESSAGE);
+						}
 						}
 					}
-					createGame.setOpponent(opponent);
 
-					Gamer host = new Gamer();
-					host.setId(currentUser.getId());
-					host.setControls(screen.getCreateGame().getTxtControls().getText());
-					createGame.setHost(host);
-
-					String createGameMessage = sdkController.createGame(createGame);
-
-					JOptionPane.showMessageDialog(screen, createGameMessage, "Game created", JOptionPane.INFORMATION_MESSAGE);
 					screen.show(Screen.USERMENU);
 				}
 			}
