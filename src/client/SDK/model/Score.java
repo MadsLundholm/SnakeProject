@@ -1,6 +1,5 @@
 package client.SDK.model;
 
-// Creates class Score
 public class Score {
 
     // Declare highScore
@@ -10,6 +9,7 @@ public class Score {
     private Game game;
     private int score;
 
+    //TODO: Kan slettes?! Bruges ikke i wrapper længere.
     // Creates constructor
     public Score(int id, Gamer user, Game game, Gamer opponent, int score)
     {

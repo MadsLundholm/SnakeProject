@@ -3,7 +3,7 @@ package client.SDK.model;
 import java.sql.Date;
 
 /**
- * Created by Mads Lundholm on 23/11 2015
+ * Created by Peter on 12-10-2015.
  */
 
 public class Game {
@@ -83,4 +83,4 @@ public class Game {
     public void setWinner(Gamer winner) {
         this.winner = winner;
     }
-} //end of class
+}

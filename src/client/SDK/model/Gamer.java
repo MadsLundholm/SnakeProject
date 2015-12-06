@@ -1,10 +1,5 @@
 package client.SDK.model;
 
-/*package model;
-
-/**
- * Created by Mads Lundholm on 25/11/15.
- */
 public class Gamer extends User {
 
     private int score;
@@ -13,9 +8,7 @@ public class Gamer extends User {
     private String controls;
     private boolean winner;
 
-    public boolean isWinner() {
-        return winner;
-    }
+    public boolean isWinner() {return winner;}
 
     public void setWinner(boolean winner) {
         this.winner = winner;

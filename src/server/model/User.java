@@ -1,6 +1,6 @@
 package server.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by Oscar on 12-10-2015.
