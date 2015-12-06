@@ -43,7 +43,7 @@ public class JoinGame extends JPanel
 		txtControl.setBounds(318, 199, 161, 34);
 		add(txtControl);
 
-		lblGameName = new JLabel("GAME NAME");
+		lblGameName = new JLabel("OPPONENT NAME");
 		lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblGameName.setForeground(Color.LIGHT_GRAY);
 		lblGameName.setBounds(199, 163, 109, 14);
@@ -84,9 +84,5 @@ public class JoinGame extends JPanel
 
 	public JTextField getTxtControl() {
 		return txtControl;
-	}
-
-	public JComboBox getComboBoxJoinGame() {
-		return comboBoxJoinGame;
 	}
 }

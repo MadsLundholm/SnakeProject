@@ -1,6 +1,7 @@
 package client.SDK;
 
 import client.SDK.model.Game;
+import client.SDK.model.Score;
 import client.SDK.model.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,8 +21,7 @@ public class SDKController {
 
     // The following two methods: login and createGame makes use of post (submitting data)
 
-    public String login(User currentUser)
-    {
+    public String login(User currentUser) {
         String data = serverConnection.post(new Gson().toJson(currentUser), "login/");
 
         JSONParser parser = new JSONParser();
@@ -34,18 +34,16 @@ public class SDKController {
             e.printStackTrace();
         }
 
-        if (jsonObject != null)
-        {
-            if (jsonObject.get("userid") != null) currentUser.setId((int)(long) jsonObject.get("userid"));
+        if (jsonObject != null) {
+            if (jsonObject.get("userid") != null) currentUser.setId((int) (long) jsonObject.get("userid"));
 
-            return(String) jsonObject.get("message");
+            return (String) jsonObject.get("message");
         }
 
         return "";
     }
 
-    public String createGame(Game game)
-    {
+    public String createGame(Game game) {
         String json = new Gson().toJson(game);
         String message = serverConnection.post(json, "games/");
 
@@ -81,7 +79,8 @@ public class SDKController {
 
     public ArrayList<User> getUsers() {
         String data = serverConnection.get("users/");
-        return new Gson().fromJson(data, new TypeToken<ArrayList<User>>() {}.getType());
+        return new Gson().fromJson(data, new TypeToken<ArrayList<User>>() {
+        }.getType());
     }
 
 
@@ -90,5 +89,12 @@ public class SDKController {
         HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
 
         return hashMap.get("message");
+    }
+
+    public ArrayList<Score> getHighScores() {
+
+        String data = serverConnection.get("highscores/");
+        return new Gson().fromJson(data, new TypeToken<ArrayList<Score>>() {
+        }.getType());
     }
 }

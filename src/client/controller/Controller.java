@@ -13,7 +13,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Controller {
+public class Controller
+{
+    //declaration
     private Screen screen;
     private SDKController sdkController;
     private User currentUser;
@@ -29,6 +31,7 @@ public class Controller {
         currentUser = new User();
     }
 
+    //runs the program. Executed from main
     public void run() {
         screen.show(Screen.LOGINMENU);
         screen.getLoginMenu().addActionListener(new LoginActionListener());
@@ -51,11 +54,14 @@ public class Controller {
                     currentUser.setPassword(screen.getLoginMenu().getTxtPassword().getText());
                     String loginMessage = sdkController.login(currentUser);
 
+                    //checks if the return message equals "Login successful"
                     if (loginMessage.equals("Login successful")) {
                         screen.show(Screen.USERMENU);
                         screen.getLoginMenu().getTxtPassword().setText("");
                         screen.getLoginMenu().getTxtUserName().setText("");
-                    } else {
+                    }
+                    //JOptionPane shows the messages from the server
+                    else {
                         JOptionPane.showMessageDialog(screen, loginMessage, "Invalid input", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NullPointerException e1) {
@@ -81,14 +87,10 @@ public class Controller {
                 screen.getCreateGame().setUserInComboBox(users);
                 screen.show(Screen.CREATEGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnHighscore()) {
-                scores = sdkController.getHighscores();
-                screen.getHighscore().setTableshowHighscore(scores);
+                scores = sdkController.getHighScores();
+                screen.getHighscore().setTableShowHighscore(scores);
                 screen.show(Screen.HIGHSCORE);
             } else if (e.getSource() == screen.getUserMenu().getBtnLogOff()) {
-                //Resetting textfields
-                screen.getLoginMenu().getTxtPassword().setText("");
-                screen.getLoginMenu().getTxtUserName().setText("");
-                screen.getCreateGame().getTxtGameName().setText("");
                 screen.show(Screen.LOGINMENU);
             }
         }
@@ -170,43 +172,38 @@ public class Controller {
     private class JoinGameActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == screen.getJoinGame().getBtnBack())
-            {
+            if (e.getSource() == screen.getJoinGame().getBtnBack()) {
                 screen.getJoinGame().getTxtControl().setText("");
                 screen.show(Screen.USERMENU);
-            }
+            } else if (e.getSource() == screen.getJoinGame().getBtnJoinGame()) {
 
-            else if (e.getSource() == screen.getJoinGame().getBtnJoinGame()) {
-
-                Game startGame = new Game();
+                Game joinGame = new Game();
 
                 for (Game g : games) {
                     if (g.getName().equals(screen.getJoinGame().getSelectedGame())) {
-                        startGame = g;
+                        joinGame = g;
                     }
                 }
 
                 Gamer opponent = new Gamer();
                 opponent.setId(currentUser.getId());
                 opponent.setControls(screen.getJoinGame().getTxtControl().getText());
-                startGame.setOpponent(opponent);
-                String joinGameMessage = sdkController.joinGame(startGame);
-                String startGameMessage = sdkController.startGame(startGame);
+                joinGame.setOpponent(opponent);
+                String joinGameMessage = sdkController.joinGame(joinGame);
+                String startGameMessage = sdkController.startGame(joinGame);
 
-                String winnerName = "";
+                String winner = "";
 
-                for (User u : users)
-                {
+                for (User u : users) {
                     try {
-                        if (u.getId() == Integer.parseInt(startGameMessage))
-                        {
-                            winnerName = u.getUsername();
+                        if (u.getId() == Integer.parseInt(startGameMessage)) {
+                            winner = u.getUsername();
                         }
                     } catch (NumberFormatException e1) {
                         e1.printStackTrace();
                     }
                 }
-                JOptionPane.showMessageDialog(screen, joinGameMessage + ".. AND THE WINNER IS" + winnerName);
+                JOptionPane.showMessageDialog(screen, joinGameMessage + ".. AND THE WINNER IS: " + winner);
             }
         }
     }
