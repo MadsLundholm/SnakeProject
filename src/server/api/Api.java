@@ -398,4 +398,15 @@ public class Api {
                 .header("Access-Control-Allow-Origin", "*")
                 .build();
     }
+
+    @GET
+    @Path("/highscores/")
+    @Produces("application/json")
+    public Response getHighScores(){
+        return Response
+                .status(200)
+                .entity(new Gson().toJson(Logic.getHighScores()))
+                .header("Access-Control-Allow-Origin", "*")
+                .build();
+    }
 }

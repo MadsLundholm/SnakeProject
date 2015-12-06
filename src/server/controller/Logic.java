@@ -256,6 +256,10 @@ public class Logic {
         return db.getHighscore();
     }
 
+    public static ArrayList<Score> getHighScores(){
+        return db.getHighScores();
+    }
+
 
     public static ArrayList<Score> getScoresByUserID(int userId) {
         return db.getScoresByUserID(userId);

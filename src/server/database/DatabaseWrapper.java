@@ -709,4 +709,32 @@ public class DatabaseWrapper {
 
         return result;
     }
+
+    public ArrayList<Score> getHighScores(){
+        ResultSet resultSet = null;
+        PreparedStatement ps;
+        ArrayList<Score> result = null;
+
+        try{
+            ps = connection.prepareStatement(dbDriver.getHighScores());
+            resultSet = ps.executeQuery();
+            result = new ArrayList<>();
+
+            while(resultSet.next()){
+                Gamer gamer = new Gamer();
+                Score score = new Score();
+                Game game = new Game();
+
+                gamer.setUsername(resultSet.getString("username"));
+                game.setGameId(resultSet.getInt("game_id"));
+                score.setScore(resultSet.getInt("score"));
+                game.setWinner(gamer);
+                score.setGame(game);
+                result.add(score);
+            }
+        } catch (SQLException s){
+
+        }
+        return result;
+    }
 }

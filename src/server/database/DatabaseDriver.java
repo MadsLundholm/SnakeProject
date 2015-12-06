@@ -207,4 +207,9 @@ public class DatabaseDriver {
         return "select games.id, games.name, users.username as opponent_name, users.first_name as opponent_first_name, users.last_name as opponent_last_name, users.id as opponent_id, scores.score, games.winner from scores, games, users where scores.user_id = ? and games.id = scores.game_id and scores.opponent_id = users.id";
     }
 
+    public String getHighScores(){
+        return "SELECT username, score, game_id FROM scores INNER JOIN games ON game_id = games.id INNER JOIN users ON user_id = users.id ORDER BY score DESC LIMIT 10;";
+    }
+
+
 }
