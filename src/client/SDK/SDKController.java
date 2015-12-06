@@ -19,8 +19,8 @@ public class SDKController {
 
     ServerConnection serverConnection = new ServerConnection();
 
-    // The following two methods: login and createGame makes use of post (submitting data)
-
+    //login Receives data in currentUser from Controller
+    //Login makes use of post, where you submit data
     public String login(User currentUser) {
         String data = serverConnection.post(new Gson().toJson(currentUser), "login/");
 
@@ -58,7 +58,7 @@ public class SDKController {
         return hashMap.get("message");
     }
 
-    public String startGame(Game joinGame) {
+    public String executeGame(Game joinGame) {
         String data = serverConnection.put(new Gson().toJson(joinGame), "games/start");
         HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
 
@@ -71,10 +71,11 @@ public class SDKController {
         }
     }
 
-    public ArrayList<Game> getGames(int userID) {
-        String data = serverConnection.get("games/pending/" + userID);
-        return new Gson().fromJson(data, new TypeToken<ArrayList<Game>>() {
-        }.getType());
+    public String deleteGame(int deleteGame) {
+        String data = serverConnection.delete("games/" + deleteGame);
+        HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
+
+        return hashMap.get("message");
     }
 
     public ArrayList<User> getUsers() {
@@ -83,18 +84,17 @@ public class SDKController {
         }.getType());
     }
 
-
-    public String deleteGame(int deleteGame) {
-        String data = serverConnection.delete("games/" + deleteGame);
-        HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
-
-        return hashMap.get("message");
-    }
-
     public ArrayList<Score> getHighScores() {
 
         String data = serverConnection.get("highscores/");
         return new Gson().fromJson(data, new TypeToken<ArrayList<Score>>() {
         }.getType());
     }
+
+    public ArrayList<Game> getGames(int userID) {
+        String data = serverConnection.get("games/pending/" + userID);
+        return new Gson().fromJson(data, new TypeToken<ArrayList<Game>>() {
+        }.getType());
+    }
+
 }

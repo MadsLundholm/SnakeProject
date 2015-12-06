@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class DeleteGame extends JPanel
 {
-	private static final long serialVersionUID = 1496674849914571382L;
 	private JLabel lblBackground;
 	private ImageIcon imageBackground;
 	private JButton btnDeleteGame;
@@ -17,6 +16,7 @@ public class DeleteGame extends JPanel
 	private JLabel lblDeleteGame;
 	private JComboBox comboBoxDeleteGame;
 
+	//Initializing
 	public DeleteGame ()
 	{
 		setSize(700, 440);
@@ -52,6 +52,7 @@ public class DeleteGame extends JPanel
 		btnDeleteGame.addActionListener(l);
 	}
 
+	//Loops through ArrayList games and adds name to comboBox
 	public void setGamesInComboBox(ArrayList<Game> games)
 	{
 		comboBoxDeleteGame.removeAllItems();
@@ -60,7 +61,7 @@ public class DeleteGame extends JPanel
 			comboBoxDeleteGame.addItem(g.getName());
 		}
 	}
-
+	//Returns selectedItem in comboBox. Used in the controller
 	public String getSelectedGame(){
 		return (String) comboBoxDeleteGame.getSelectedItem();
 	}

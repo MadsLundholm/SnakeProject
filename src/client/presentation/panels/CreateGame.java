@@ -7,115 +7,121 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CreateGame extends JPanel  {
-	private static final long serialVersionUID = -6560824147938225127L;
-	private JLabel lblBackground;
-	private ImageIcon imageBackground;
-	private JButton btnBack;
-	private JButton btnCreateGame;
-	private JTextField txtGameName;
-	private JLabel lblGameName;
-	private JLabel lblControls;
-	private JTextField txtControls;
-	private JComboBox comboBoxMapSize;
-	private JComboBox comboBoxChooseOpponent;
-	private JLabel lblMapSize;
-	private JLabel lblOpponentId;
+public class CreateGame extends JPanel {
 
-	public CreateGame() {
-		setSize(700, 440);
-		setLayout(null);
+    //Declaration
+    private JLabel lblBackground;
+    private ImageIcon imageBackground;
+    private JButton btnBack;
+    private JButton btnCreateGame;
+    private JTextField txtGameName;
+    private JLabel lblGameName;
+    private JLabel lblControls;
+    private JTextField txtControls;
+    private JComboBox comboBoxMapSize;
+    private JComboBox comboBoxChooseOpponent;
+    private JLabel lblMapSize;
+    private JLabel lblOpponentId;
 
-		txtGameName = new JTextField();
-		txtGameName.setColumns(10);
-		txtGameName.setBounds(278, 156, 211, 34);
-		add(txtGameName);
+    public CreateGame() {
+        setSize(700, 440);
+        setLayout(null);
 
-		btnBack = new JButton("BACK");
-		btnBack.setBounds(10, 332, 83, 23);
-		add(btnBack);
+        txtGameName = new JTextField();
+        txtGameName.setColumns(10);
+        txtGameName.setBounds(278, 156, 211, 34);
+        add(txtGameName);
 
-		btnCreateGame = new JButton("CREATE GAME");
-		btnCreateGame.setBounds(365, 332, 125, 23);
-		add(btnCreateGame);
+        btnBack = new JButton("BACK");
+        btnBack.setBounds(10, 332, 83, 23);
+        add(btnBack);
 
-		txtControls = new JTextField();
-		txtControls.setColumns(10);
-		txtControls.setBounds(278, 246, 211, 34);
-		add(txtControls);
+        btnCreateGame = new JButton("CREATE GAME");
+        btnCreateGame.setBounds(365, 332, 125, 23);
+        add(btnCreateGame);
 
-		lblControls = new JLabel("CONTROLS");
-		lblControls.setFont(new Font("Calibri", Font.BOLD, 15));
-		lblControls.setForeground(Color.LIGHT_GRAY);
-		lblControls.setBounds(143, 253, 110, 20);
-		add(lblControls);
+        txtControls = new JTextField();
+        txtControls.setColumns(10);
+        txtControls.setBounds(278, 246, 211, 34);
+        add(txtControls);
 
-		lblMapSize = new JLabel("MAPSIZE");
-		lblMapSize.setFont(new Font("Calibri", Font.BOLD, 15));
-		lblMapSize.setBounds(143, 208, 110, 20);
-		lblMapSize.setForeground(Color.LIGHT_GRAY);
-		add(lblMapSize);
+        lblControls = new JLabel("CONTROLS");
+        lblControls.setFont(new Font("Calibri", Font.BOLD, 15));
+        lblControls.setForeground(Color.LIGHT_GRAY);
+        lblControls.setBounds(143, 253, 110, 20);
+        add(lblControls);
 
-		Integer [] mapSize = {10, 15, 20, 25};
-		comboBoxMapSize = new JComboBox(mapSize);
-		comboBoxMapSize.setSelectedIndex(3);
-		comboBoxMapSize.setBounds(278, 201, 211, 34);
-		add(comboBoxMapSize);
+        lblMapSize = new JLabel("MAPSIZE");
+        lblMapSize.setFont(new Font("Calibri", Font.BOLD, 15));
+        lblMapSize.setBounds(143, 208, 110, 20);
+        lblMapSize.setForeground(Color.LIGHT_GRAY);
+        add(lblMapSize);
 
-		lblGameName = new JLabel("GAMENAME");
-		lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
-		lblGameName.setBounds(143, 163, 110, 20);
-		lblGameName.setForeground(Color.LIGHT_GRAY);
-		add(lblGameName);
+        Integer[] mapSize = {10, 15, 20, 25};
+        comboBoxMapSize = new JComboBox(mapSize);
+        comboBoxMapSize.setSelectedIndex(3);
+        comboBoxMapSize.setBounds(278, 201, 211, 34);
+        add(comboBoxMapSize);
 
-		imageBackground = new ImageIcon(getClass().getResource("/client/presentation/imgSrc/createGame.jpg"));
+        lblGameName = new JLabel("GAMENAME");
+        lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
+        lblGameName.setBounds(143, 163, 110, 20);
+        lblGameName.setForeground(Color.LIGHT_GRAY);
+        add(lblGameName);
 
-		lblOpponentId = new JLabel("OPPONENT NAME");
-		lblOpponentId.setFont(new Font("Calibri", Font.BOLD, 15));
-		lblOpponentId.setForeground(Color.LIGHT_GRAY);
-		lblOpponentId.setBounds(143, 298, 125, 20);
-		add(lblOpponentId);
+        imageBackground = new ImageIcon(getClass().getResource("/client/presentation/imgSrc/createGame.jpg"));
 
-		comboBoxChooseOpponent = new JComboBox();
-		comboBoxChooseOpponent.setBounds(278, 291, 211, 34);
-		add(comboBoxChooseOpponent);
+        lblOpponentId = new JLabel("OPPONENT NAME");
+        lblOpponentId.setFont(new Font("Calibri", Font.BOLD, 15));
+        lblOpponentId.setForeground(Color.LIGHT_GRAY);
+        lblOpponentId.setBounds(143, 298, 125, 20);
+        add(lblOpponentId);
 
-		lblBackground = new JLabel(imageBackground);
-		lblBackground.setBounds(0, 0, 684, 402);
-		add(lblBackground);
-	}
+        comboBoxChooseOpponent = new JComboBox();
+        comboBoxChooseOpponent.setBounds(278, 291, 211, 34);
+        add(comboBoxChooseOpponent);
 
-	public void addActionListener(ActionListener l) {
-		btnBack.addActionListener(l);
-		btnCreateGame.addActionListener(l);
-	}
+        lblBackground = new JLabel(imageBackground);
+        lblBackground.setBounds(0, 0, 684, 402);
+        add(lblBackground);
+    }
 
-	public void setUserInComboBox(ArrayList<User> users)
-	{
-		comboBoxChooseOpponent.removeAllItems();
-		for (User u: users)
-		{
-			comboBoxChooseOpponent.addItem(u.getUsername());
-		}
-	}
+    public void addActionListener(ActionListener l) {
+        btnBack.addActionListener(l);
+        btnCreateGame.addActionListener(l);
+    }
 
-	public String getSelectedUser(){
-		return (String) comboBoxChooseOpponent.getSelectedItem();
-	}
+    //Adding content to comboBox
+    public void setUserInComboBox(ArrayList<User> users) {
+        //Removes all items before adding content
+        comboBoxChooseOpponent.removeAllItems();
+        for (User u : users) {
+            comboBoxChooseOpponent.addItem(u.getUsername());
+        }
+    }
+    //Returns selectedItem in comboBox. Used in the controller
+    public String getSelectedUser() {
+        return (String) comboBoxChooseOpponent.getSelectedItem();
+    }
 
-	public JComboBox getComboBoxMapSize() {return comboBoxMapSize;}
+    //Getters
+    public JComboBox getComboBoxMapSize() {
+        return comboBoxMapSize;
+    }
 
-	public JButton getBtnBack() {
-		return btnBack;
-	}
+    public JButton getBtnBack() {
+        return btnBack;
+    }
 
-	public JButton getBtnCreateGame() {
-		return btnCreateGame;
-	}
+    public JButton getBtnCreateGame() {
+        return btnCreateGame;
+    }
 
-	public JTextField getTxtGameName() {
-		return txtGameName;
-	}
+    public JTextField getTxtGameName() {
+        return txtGameName;
+    }
 
-	public JTextField getTxtControls() {return txtControls;}
+    public JTextField getTxtControls() {
+        return txtControls;
+    }
 }

@@ -50,11 +50,12 @@ public class Controller
             if (e.getSource() == screen.getLoginMenu().getBtnLogin()) {
 
                 try {
+                    //Collects input typed by currentUser and sends it to sdkController.login
                     currentUser.setUsername(screen.getLoginMenu().getTxtUserName().getText());
                     currentUser.setPassword(screen.getLoginMenu().getTxtPassword().getText());
                     String loginMessage = sdkController.login(currentUser);
 
-                    //checks if the return message equals "Login successful"
+                    //Checks if the return message equals "Login successful"
                     if (loginMessage.equals("Login successful")) {
                         screen.show(Screen.USERMENU);
                         screen.getLoginMenu().getTxtPassword().setText("");
@@ -70,27 +71,33 @@ public class Controller
             }
         }
     }
-
     private class UserMenuActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == screen.getUserMenu().getBtnJoinGame()) {
+                //setting games in ComboBox in panel JoinGame
                 games = sdkController.getGames(currentUser.getId());
                 screen.getJoinGame().setGamesInComboBox(games);
                 screen.show(Screen.JOINGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnDeleteGame()) {
+                //setting games in ComboBox in panel DeleteGame
                 games = sdkController.getGames(currentUser.getId());
                 screen.getDeleteGame().setGamesInComboBox(games);
                 screen.show(Screen.DELETEGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnCreateGame()) {
+                //setting users in ComboBox in panel CreateGame
                 users = sdkController.getUsers();
                 screen.getCreateGame().setUserInComboBox(users);
                 screen.show(Screen.CREATEGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnHighscore()) {
+                //setting scores in JTable in panel Highscore
                 scores = sdkController.getHighScores();
                 screen.getHighscore().setTableShowHighscore(scores);
                 screen.show(Screen.HIGHSCORE);
             } else if (e.getSource() == screen.getUserMenu().getBtnLogOff()) {
+                //clearing inputFields in panel LoginMenu
+                screen.getLoginMenu().getTxtPassword().setText("");
+                screen.getLoginMenu().getTxtUserName().setText("");
                 screen.show(Screen.LOGINMENU);
             }
         }
@@ -102,37 +109,50 @@ public class Controller
         public void actionPerformed(ActionEvent e) {
             try {
                 if (e.getSource() == screen.getCreateGame().getBtnBack()) {
+                    //clearing inputFields
                     screen.getCreateGame().getTxtControls().setText("");
                     screen.getCreateGame().getTxtGameName().setText("");
                     screen.show((Screen.USERMENU));
                 } else if (e.getSource() == screen.getCreateGame().getBtnCreateGame()) {
+                    //new object of Game named createGame
                     Game createGame = new Game();
+
+                    //adding content to createGame
                     createGame.setName(screen.getCreateGame().getTxtGameName().getText());
                     createGame.setMapSize((Integer) screen.getCreateGame().getComboBoxMapSize().getSelectedItem());
                     createGame.setName(screen.getCreateGame().getSelectedUser());
 
+                    //new object of Gamer named opponent
                     Gamer opponent = new Gamer();
-                    for (User u : users) {
-                        if (u.getUsername() == screen.getCreateGame().getSelectedUser()) {
-                            opponent.setId(u.getId());
-                            if (opponent.getId() == currentUser.getId()) {
+                    //Loops through ArrayList users
+                    for (User user : users) {
+                        if (user.getUsername() == screen.getCreateGame().getSelectedUser()) {
+                            opponent.setId(user.getId());
+                            //Making sure host cannot challenge himself
+                            if (opponent.getId() == currentUser.getId())
+                            {
                                 JOptionPane.showMessageDialog(screen, "YOU CAN'T CHOOSE YOURSELF AS OPPONENT.");
-                            } else {
-                                createGame.setOpponent(opponent);
-
+                            }
+                            else
+                            {
+                                //new object of Gamer named host
                                 Gamer host = new Gamer();
+
+                                //adding content to host
                                 host.setId(currentUser.getId());
                                 host.setControls(screen.getCreateGame().getTxtControls().getText());
+
+                                //adding host and opponent to createGame
                                 createGame.setHost(host);
+                                createGame.setOpponent(opponent);
 
-                                String createGameMessage = sdkController.createGame(createGame);
+                                //sending data to sdkController.createGame
+                                String createGameMsg = sdkController.createGame(createGame);
 
-                                JOptionPane.showMessageDialog(screen, createGameMessage, "Game created", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(screen, createGameMsg, "Game created", JOptionPane.INFORMATION_MESSAGE);
                             }
                         }
                     }
-
-                    screen.show(Screen.USERMENU);
                 }
             } catch (NumberFormatException e2) {
                 JOptionPane.showMessageDialog(screen, "Controls needs to be W,A,S,D", "Create game failed", JOptionPane.ERROR_MESSAGE);
@@ -143,7 +163,8 @@ public class Controller
     private class HighscoreActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == screen.getHighscore().getBtnBack()) {
+            if (e.getSource() == screen.getHighscore().getBtnBack())
+            {
                 screen.show(Screen.USERMENU);
             }
         }
@@ -155,15 +176,19 @@ public class Controller
             if (e.getSource() == screen.getDeleteGame().getBtnBack()) {
                 screen.show((Screen.USERMENU));
             } else if (e.getSource() == screen.getDeleteGame().getBtnDeleteGame()) {
+                //New object of Game
                 Game deleteGame = new Game();
                 deleteGame.setName(screen.getDeleteGame().getSelectedGame());
+                //Loops through ArrayList games
                 for (Game game : games) {
                     if (game.getName() == screen.getDeleteGame().getSelectedGame()) {
                         deleteGame = game;
                     }
                 }
-                String message = sdkController.deleteGame(deleteGame.getGameId());
-                JOptionPane.showMessageDialog(screen, message);
+                //Sending data to sdkController.deleteGame
+                String deleteGameMsg = sdkController.deleteGame(deleteGame.getGameId());
+
+                JOptionPane.showMessageDialog(screen, deleteGameMsg);
             }
 
         }
@@ -173,31 +198,37 @@ public class Controller
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == screen.getJoinGame().getBtnBack()) {
+               //clearing inputFields
                 screen.getJoinGame().getTxtControl().setText("");
+
                 screen.show(Screen.USERMENU);
             } else if (e.getSource() == screen.getJoinGame().getBtnJoinGame()) {
-
+                //New object of game named joinGame
                 Game joinGame = new Game();
 
-                for (Game g : games) {
-                    if (g.getName().equals(screen.getJoinGame().getSelectedGame())) {
-                        joinGame = g;
+                //Loops through ArrayList games
+                for (Game game : games) {
+                    if (game.getName().equals(screen.getJoinGame().getSelectedGame())) {
+                        joinGame = game;
                     }
                 }
-
+                //New object of Gamer named opponent
                 Gamer opponent = new Gamer();
+                //Adding content to opponent and sets opponent in joinGame
                 opponent.setId(currentUser.getId());
                 opponent.setControls(screen.getJoinGame().getTxtControl().getText());
                 joinGame.setOpponent(opponent);
+
+                //Sending data to sckController.joinGame and sdkController.executeGame
                 String joinGameMessage = sdkController.joinGame(joinGame);
-                String startGameMessage = sdkController.startGame(joinGame);
+                String startGameMessage = sdkController.executeGame(joinGame);
 
-                String winner = "";
-
-                for (User u : users) {
+                String winner = null;
+                //Loops through ArrayList users
+                for (User user : users) {
                     try {
-                        if (u.getId() == Integer.parseInt(startGameMessage)) {
-                            winner = u.getUsername();
+                        if (user.getId() == Integer.parseInt(startGameMessage)) {
+                            winner = user.getUsername();
                         }
                     } catch (NumberFormatException e1) {
                         e1.printStackTrace();

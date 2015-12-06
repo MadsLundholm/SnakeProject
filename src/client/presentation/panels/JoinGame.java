@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class JoinGame extends JPanel
 {
-	private static final long serialVersionUID = -6560824147938225127L;
+	//Declaration
 	private JLabel lblBackground;
 	private ImageIcon imageBackground;
 	private JButton btnBack;
