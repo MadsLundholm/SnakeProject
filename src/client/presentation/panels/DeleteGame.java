@@ -25,10 +25,10 @@ public class DeleteGame extends JPanel {
         add(btnBack);
 
         btnDeleteGame = new JButton("DELETE GAME");
-        btnDeleteGame.setBounds(320, 231, 168, 23);
+        btnDeleteGame.setBounds(365, 231, 123, 23);
         add(btnDeleteGame);
 
-        lblDeleteGame = new JLabel("DELETE GAME");
+        lblDeleteGame = new JLabel("GAME NAME");
         lblDeleteGame.setFont(new Font("Calibri", Font.BOLD, 15));
         lblDeleteGame.setForeground(Color.LIGHT_GRAY);
         lblDeleteGame.setBounds(162, 196, 95, 14);
@@ -57,7 +57,7 @@ public class DeleteGame extends JPanel {
         }
     }
 
-    //Returns selectedItem in comboBox. Used in the controller
+    //Returns selectedItem in comboBox. Used in the client.controller
     public String getChosenGame() {
         return (String) comboBoxDeleteGame.getSelectedItem();
     }

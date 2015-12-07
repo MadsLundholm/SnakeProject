@@ -45,7 +45,7 @@ public class SDKController {
     }
 
     //Method creates game and currentUsers/host controls and challenge opponent
-    //Receives createGame from controller and makes use of post (submitting data) to the server
+    //Receives createGame from client.controller and makes use of post (submitting data) to the server
     //Returns message from server to the Controller to determine what to happen next
     public String createGame(Game createGame) {
         String json = new Gson().toJson(createGame);

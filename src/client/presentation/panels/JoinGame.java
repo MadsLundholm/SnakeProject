@@ -31,7 +31,7 @@ public class JoinGame extends JPanel {
         add(btnBack);
 
         btnJoinGame = new JButton("JOIN GAME");
-        btnJoinGame.setBounds(318, 239, 161, 24);
+        btnJoinGame.setBounds(318, 244, 161, 24);
         add(btnJoinGame);
 
         imageBackground = new ImageIcon(getClass().getResource("/client/presentation/imgSrc/joinGame.jpg"));
@@ -44,13 +44,13 @@ public class JoinGame extends JPanel {
         lblGameName = new JLabel("GAME NAME");
         lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
         lblGameName.setForeground(Color.LIGHT_GRAY);
-        lblGameName.setBounds(199, 163, 109, 14);
+        lblGameName.setBounds(165, 165, 152, 14);
         add(lblGameName);
 
-        lblControls = new JLabel("CONTROLS");
+        lblControls = new JLabel("CONTROLS (W,A,S,D)");
         lblControls.setFont(new Font("Calibri", Font.BOLD, 15));
         lblControls.setForeground(Color.LIGHT_GRAY);
-        lblControls.setBounds(199, 208, 109, 14);
+        lblControls.setBounds(165, 210, 152, 14);
         add(lblControls);
 
         lblBackground = new JLabel(imageBackground);

@@ -29,7 +29,7 @@ public class CreateGame extends JPanel {
 
         txtGameName = new JTextField();
         txtGameName.setColumns(10);
-        txtGameName.setBounds(278, 156, 211, 34);
+        txtGameName.setBounds(323, 156, 211, 34);
         add(txtGameName);
 
         btnBack = new JButton("BACK");
@@ -37,35 +37,35 @@ public class CreateGame extends JPanel {
         add(btnBack);
 
         btnCreateGame = new JButton("CREATE GAME");
-        btnCreateGame.setBounds(365, 332, 125, 23);
+        btnCreateGame.setBounds(410, 332, 125, 23);
         add(btnCreateGame);
 
         txtControls = new JTextField();
         txtControls.setColumns(10);
-        txtControls.setBounds(278, 246, 211, 34);
+        txtControls.setBounds(323, 246, 211, 34);
         add(txtControls);
 
         lblControls = new JLabel("CONTROLS (W,A,S,D)");
         lblControls.setFont(new Font("Calibri", Font.BOLD, 15));
         lblControls.setForeground(Color.LIGHT_GRAY);
-        lblControls.setBounds(143, 253, 110, 20);
+        lblControls.setBounds(158, 253, 140, 20);
         add(lblControls);
 
         lblMapSize = new JLabel("MAPSIZE");
         lblMapSize.setFont(new Font("Calibri", Font.BOLD, 15));
-        lblMapSize.setBounds(143, 208, 110, 20);
+        lblMapSize.setBounds(158, 208, 155, 20);
         lblMapSize.setForeground(Color.LIGHT_GRAY);
         add(lblMapSize);
 
         Integer[] mapSize = {10, 15, 20, 25};
         comboBoxMapSize = new JComboBox(mapSize);
         comboBoxMapSize.setSelectedIndex(3);
-        comboBoxMapSize.setBounds(278, 201, 211, 34);
+        comboBoxMapSize.setBounds(323, 201, 211, 34);
         add(comboBoxMapSize);
 
         lblGameName = new JLabel("GAME NAME");
         lblGameName.setFont(new Font("Calibri", Font.BOLD, 15));
-        lblGameName.setBounds(143, 163, 110, 20);
+        lblGameName.setBounds(158, 163, 155, 20);
         lblGameName.setForeground(Color.LIGHT_GRAY);
         add(lblGameName);
 
@@ -74,11 +74,11 @@ public class CreateGame extends JPanel {
         lblOpponentId = new JLabel("OPPONENT NAME");
         lblOpponentId.setFont(new Font("Calibri", Font.BOLD, 15));
         lblOpponentId.setForeground(Color.LIGHT_GRAY);
-        lblOpponentId.setBounds(143, 298, 125, 20);
+        lblOpponentId.setBounds(158, 298, 155, 20);
         add(lblOpponentId);
 
         comboBoxChooseOpponent = new JComboBox();
-        comboBoxChooseOpponent.setBounds(278, 291, 211, 34);
+        comboBoxChooseOpponent.setBounds(323, 291, 211, 34);
         add(comboBoxChooseOpponent);
 
         lblBackground = new JLabel(imageBackground);
@@ -100,7 +100,7 @@ public class CreateGame extends JPanel {
         }
     }
 
-    //Returns selectedItem in comboBox. Used in the controller
+    //Returns selectedItem in comboBox. Used in the client.controller
     public String getChosenUser() {
         return (String) comboBoxChooseOpponent.getSelectedItem();
     }

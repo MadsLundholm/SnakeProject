@@ -1,6 +1,5 @@
 package client.controller;
 
-
 import client.SDK.SDKController;
 import client.SDK.model.Game;
 import client.SDK.model.Gamer;
@@ -14,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Controller {
-    //declaration
+    //Declaration
     private Screen screen;
     private SDKController sdkController;
     private User currentUser;
@@ -30,7 +29,7 @@ public class Controller {
         currentUser = new User();
     }
 
-    //runs the program. Executed from main
+    //Method runs the program. Executed from main
     public void run() {
         screen.show(Screen.LOGINMENU);
         screen.getLoginMenu().addActionListener(new LoginActionListener());
