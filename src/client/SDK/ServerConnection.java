@@ -7,13 +7,15 @@ import com.sun.jersey.api.client.WebResource;
 //ServerConnection consists of the HTTP methods get, post, put and delete
 public class ServerConnection {
 
+    //Declaration
+    private String hostAddress;
+    private int port;
+
+    //Constructor with initialization
     public ServerConnection() {
         this.hostAddress = "http://localhost";
         this.port = 9998;
     }
-
-    private String hostAddress;
-    private int port;
 
     public void setHostAddress(String hostAddress) {
         this.hostAddress = hostAddress;
@@ -70,7 +72,8 @@ public class ServerConnection {
         return outputDelete;
     }
 
-    public String put(String json, String path){
+    //update is a HTTP method used to update data
+    public String put(String json, String path) {
 
         String message = null;
 
@@ -79,7 +82,9 @@ public class ServerConnection {
         WebResource webResource = client.resource(getHostAddress() + ":" + getPort() + "/api/" + path);
         ClientResponse response = webResource.type("application/json").put(ClientResponse.class, json);
 
-        if (response != null){message = response.getEntity(String.class);}
+        if (response != null) {
+            message = response.getEntity(String.class);
+        }
 
         return message;
     }

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class LoginMenu extends JPanel {
-    private static final long serialVersionUID = -4224626924544727062L;
+    //Declaration
     private JLabel lblBackground;
     private ImageIcon imageBackground;
     private JLabel lblPassword;
@@ -49,6 +49,7 @@ public class LoginMenu extends JPanel {
         add(lblBackground);
     }
 
+    //Getters
     public JTextField getTxtUserName() {
         return txtEmail;
     }

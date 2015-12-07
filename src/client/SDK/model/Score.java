@@ -2,17 +2,15 @@ package client.SDK.model;
 
 public class Score {
 
-    // Declare highScore
+    // Declaration for Score
     private int id;
     private Gamer user;
     private Gamer opponent;
     private Game game;
     private int score;
 
-    //TODO: Kan slettes?! Bruges ikke i wrapper længere.
-    // Creates constructor
-    public Score(int id, Gamer user, Game game, Gamer opponent, int score)
-    {
+    // Constructor with initialization
+    public Score(int id, Gamer user, Game game, Gamer opponent, int score) {
         this.id = id;
         this.user = user;
         this.game = game;
@@ -20,13 +18,14 @@ public class Score {
         this.score = score;
     }
 
-    public Score(){}
+    // Getters and setters
+    public Gamer getOpponent() {
+        return opponent;
+    }
 
-    // Creates get method which returns the highScore
-
-    public Gamer getOpponent() { return opponent; }
-
-    public void setOpponent(Gamer opponent) { this.opponent = opponent;  }
+    public void setOpponent(Gamer opponent) {
+        this.opponent = opponent;
+    }
 
     public int getId() {
         return id;

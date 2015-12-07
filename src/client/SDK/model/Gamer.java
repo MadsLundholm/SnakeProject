@@ -1,14 +1,17 @@
 package client.SDK.model;
 
 public class Gamer extends User {
-
+    //Declaration for Gamer
     private int score;
     private int totalScore;
     private int kills;
     private String controls;
     private boolean winner;
 
-    public boolean isWinner() {return winner;}
+    //Getters and setters
+    public boolean isWinner() {
+        return winner;
+    }
 
     public void setWinner(boolean winner) {
         this.winner = winner;

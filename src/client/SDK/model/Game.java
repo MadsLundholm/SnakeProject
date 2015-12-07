@@ -3,11 +3,11 @@ package client.SDK.model;
 import java.sql.Date;
 
 /**
- * Created by Peter on 12-10-2015.
+ * Created by Mads Lundholm on 23-11-2015.
  */
 
 public class Game {
-    //Creating the variables needed for the game
+    //Declaration of the variables needed in the game
     private int gameId;
     private Gamer winner;
     private String name;
@@ -17,8 +17,7 @@ public class Game {
     private Date created;
     private int mapSize;
 
-    public Game(){}
-
+    //Getters and setters
     public Date getCreated() {
         return created;
     }
@@ -44,35 +43,35 @@ public class Game {
     }
 
     //Creating get/set method for all the variables, so they can be used by other classes
-    public int getGameId(){
+    public int getGameId() {
         return gameId;
     }
 
-    public void setGameId(int gameId){
+    public void setGameId(int gameId) {
         this.gameId = gameId;
     }
 
-    public Gamer getHost(){
+    public Gamer getHost() {
         return host;
     }
 
-    public void setHost(Gamer host){
+    public void setHost(Gamer host) {
         this.host = host;
     }
 
-    public Gamer getOpponent(){
+    public Gamer getOpponent() {
         return opponent;
     }
 
-    public void setOpponent(Gamer opponent){
+    public void setOpponent(Gamer opponent) {
         this.opponent = opponent;
     }
 
-    public String getStatus(){
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status){
+    public void setStatus(String status) {
         this.status = status;
     }
 

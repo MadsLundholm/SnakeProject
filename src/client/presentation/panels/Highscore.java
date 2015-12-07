@@ -51,23 +51,23 @@ public class Highscore extends JPanel {
         return btnBack;
     }
 
+    //Setting scores into JTable
     public void setTableShowHighscore(ArrayList<Score> scores) {
         HighscoreTableModel highscoreTableModel = new HighscoreTableModel(scores);
         tableShowHighscore.setModel(highscoreTableModel);
     }
 
     private class HighscoreTableModel extends AbstractTableModel {
-        private static final long serialVersionUID = 1L;
         public static final int USERNAME = 0;
         public static final int SCORE = 1;
         public static final int GAME_ID = 2;
 
-        private ArrayList<Score> highscores;
+        private ArrayList<Score> highScore;
         private String[] columns = {"USERNAME", "SCORE", "GAME ID"};
         private int numberOfRows;
 
-        public HighscoreTableModel(ArrayList<Score> highscores) {
-            this.highscores = highscores;
+        public HighscoreTableModel(ArrayList<Score> highScore) {
+            this.highScore = highScore;
             fireTableStructureChanged();
         }
 
@@ -83,7 +83,7 @@ public class Highscore extends JPanel {
 
         @Override
         public int getRowCount() {
-            numberOfRows = highscores.size();
+            numberOfRows = highScore.size();
             return numberOfRows;
         }
 
@@ -98,15 +98,14 @@ public class Highscore extends JPanel {
             switch (columnIndex) {
 
                 case USERNAME:
-                    return highscores.get(rowIndex).getGame().getWinner().getUsername();
+                    return highScore.get(rowIndex).getGame().getWinner().getUsername();
                 case SCORE:
-                    return highscores.get(rowIndex).getScore();
+                    return highScore.get(rowIndex).getScore();
                 case GAME_ID:
-                    return highscores.get(rowIndex).getGame().getGameId();
+                    return highScore.get(rowIndex).getGame().getGameId();
 
             }
             return null;
         }
-
     }
 }

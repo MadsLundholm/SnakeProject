@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class UserMenu extends JPanel {
-    private static final long serialVersionUID = 6329565811403487708L;
+    //Declaration
     private JLabel lblBackground;
     private ImageIcon imageBackground;
     private JButton btnLogOff;
@@ -58,6 +58,7 @@ public class UserMenu extends JPanel {
         btnCreateGame.addActionListener(l);
     }
 
+    //Getters
     public JButton getBtnLogOff() {
         return btnLogOff;
     }

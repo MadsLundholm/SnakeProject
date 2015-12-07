@@ -13,8 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Controller
-{
+public class Controller {
     //declaration
     private Screen screen;
     private SDKController sdkController;
@@ -71,23 +70,24 @@ public class Controller
             }
         }
     }
+
     private class UserMenuActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == screen.getUserMenu().getBtnJoinGame()) {
                 //setting games in ComboBox in panel JoinGame
                 games = sdkController.getGames(currentUser.getId());
-                screen.getJoinGame().setGamesInComboBox(games);
+                screen.getJoinGame().AddGamesInComboBox(games);
                 screen.show(Screen.JOINGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnDeleteGame()) {
                 //setting games in ComboBox in panel DeleteGame
                 games = sdkController.getGames(currentUser.getId());
-                screen.getDeleteGame().setGamesInComboBox(games);
+                screen.getDeleteGame().AddGamesInComboBox(games);
                 screen.show(Screen.DELETEGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnCreateGame()) {
                 //setting users in ComboBox in panel CreateGame
                 users = sdkController.getUsers();
-                screen.getCreateGame().setUserInComboBox(users);
+                screen.getCreateGame().AddUserInComboBox(users);
                 screen.show(Screen.CREATEGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnHighscore()) {
                 //setting scores in JTable in panel Highscore
@@ -120,21 +120,18 @@ public class Controller
                     //adding content to createGame
                     createGame.setName(screen.getCreateGame().getTxtGameName().getText());
                     createGame.setMapSize((Integer) screen.getCreateGame().getComboBoxMapSize().getSelectedItem());
-                    createGame.setName(screen.getCreateGame().getSelectedUser());
+                    createGame.setName(screen.getCreateGame().getChosenUser());
 
                     //new object of Gamer named opponent
                     Gamer opponent = new Gamer();
                     //Loops through ArrayList users
                     for (User user : users) {
-                        if (user.getUsername() == screen.getCreateGame().getSelectedUser()) {
+                        if (user.getUsername() == screen.getCreateGame().getChosenUser()) {
                             opponent.setId(user.getId());
                             //Making sure host cannot challenge himself
-                            if (opponent.getId() == currentUser.getId())
-                            {
+                            if (opponent.getId() == currentUser.getId()) {
                                 JOptionPane.showMessageDialog(screen, "YOU CAN'T CHOOSE YOURSELF AS OPPONENT.");
-                            }
-                            else
-                            {
+                            } else {
                                 //new object of Gamer named host
                                 Gamer host = new Gamer();
 
@@ -142,8 +139,9 @@ public class Controller
                                 host.setId(currentUser.getId());
                                 host.setControls(screen.getCreateGame().getTxtControls().getText());
 
-                                //adding host and opponent to createGame
+                                //adding host, name and opponent to createGame
                                 createGame.setHost(host);
+                                createGame.setName(screen.getCreateGame().getTxtGameName().getText());
                                 createGame.setOpponent(opponent);
 
                                 //sending data to sdkController.createGame
@@ -163,8 +161,7 @@ public class Controller
     private class HighscoreActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == screen.getHighscore().getBtnBack())
-            {
+            if (e.getSource() == screen.getHighscore().getBtnBack()) {
                 screen.show(Screen.USERMENU);
             }
         }
@@ -178,10 +175,10 @@ public class Controller
             } else if (e.getSource() == screen.getDeleteGame().getBtnDeleteGame()) {
                 //New object of Game
                 Game deleteGame = new Game();
-                deleteGame.setName(screen.getDeleteGame().getSelectedGame());
+                deleteGame.setName(screen.getDeleteGame().getChosenGame());
                 //Loops through ArrayList games
                 for (Game game : games) {
-                    if (game.getName() == screen.getDeleteGame().getSelectedGame()) {
+                    if (game.getName() == screen.getDeleteGame().getChosenGame()) {
                         deleteGame = game;
                     }
                 }
@@ -198,7 +195,7 @@ public class Controller
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == screen.getJoinGame().getBtnBack()) {
-               //clearing inputFields
+                //clearing inputFields
                 screen.getJoinGame().getTxtControl().setText("");
 
                 screen.show(Screen.USERMENU);
@@ -208,7 +205,7 @@ public class Controller
 
                 //Loops through ArrayList games
                 for (Game game : games) {
-                    if (game.getName().equals(screen.getJoinGame().getSelectedGame())) {
+                    if (game.getName().equals(screen.getJoinGame().getChosenGame())) {
                         joinGame = game;
                     }
                 }
@@ -234,7 +231,7 @@ public class Controller
                         e1.printStackTrace();
                     }
                 }
-                JOptionPane.showMessageDialog(screen, joinGameMessage + ".. AND THE WINNER IS: " + winner);
+                JOptionPane.showMessageDialog(screen, joinGameMessage + " .. AND THE WINNER IS: " + winner);
             }
         }
     }

@@ -2,14 +2,8 @@ package client.SDK.model;
 
 import java.sql.Date;
 
-
-/**
- * Created by Oscar on 12-10-2015.
- */
-//
 public class User {
-
-    //creating variables
+    //Declaration for users
     private int id;
     private String firstName;
     private String lastName;
@@ -19,10 +13,8 @@ public class User {
     private String status;
     private String email;
     private int type;
-    public User () {}
 
-    //creating get and set method for all the variables, so they can be used by other classes
-
+    //Getters and setters
 
     public int getId() {
         return id;
