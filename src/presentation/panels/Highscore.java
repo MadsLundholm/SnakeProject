@@ -36,7 +36,7 @@ public class Highscore extends JPanel {
         btnBack.setBounds(10, 332, 83, 23);
         add(btnBack);
 
-        imageBackground = new ImageIcon(getClass().getResource("/presentation/imgSrc/highscore.jpg"));
+        imageBackground = new ImageIcon(getClass().getResource("/rsc/imgSrc/highscore.jpg"));
         lblBackground = new JLabel(imageBackground);
         lblBackground.setBounds(0, 0, 684, 402);
         add(lblBackground);

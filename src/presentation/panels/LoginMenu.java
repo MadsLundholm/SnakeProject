@@ -43,7 +43,7 @@ public class LoginMenu extends JPanel {
         btnLogin.setBounds(345, 252, 113, 23);
         add(btnLogin);
 
-        imageBackground = new ImageIcon(getClass().getResource("/presentation/imgSrc/loginMenu.jpg"));
+        imageBackground = new ImageIcon(getClass().getResource("/rsc/imgSrc/loginMenu.jpg"));
         lblBackground = new JLabel(imageBackground);
         lblBackground.setBounds(0, 0, 684, 402);
         add(lblBackground);

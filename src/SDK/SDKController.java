@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,20 +46,20 @@ public class SDKController {
     //Method creates game and currentUsers/host controls and challenge opponent
     //Receives createGame from controller and makes use of post (submitting data) to the server
     //Returns message from server to the Controller to determine what to happen next
-    public String createGame(Game createGame) {
+    public Object createGame(Game createGame) {
         String json = new Gson().toJson(createGame);
         String message = serverConnection.post(json, "games/");
 
-        HashMap<String, String> hashMap = new Gson().fromJson(message, HashMap.class);
+        HashMap hashMap = new Gson().fromJson(message, HashMap.class);
         return hashMap.get("message");
     }
 
     //Method enables opponent to take up the challenge
     //Receives joinGame from Controller and put (update) the server
     //Returns message to the client to determinate what to happen next
-    public String joinGame(Game joinGame) {
+    public Object joinGame(Game joinGame) {
         String data = serverConnection.put(new Gson().toJson(joinGame), "games/join");
-        HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
+        HashMap hashMap = new Gson().fromJson(data, HashMap.class);
 
         return hashMap.get("message");
     }
@@ -68,9 +67,9 @@ public class SDKController {
     //Method determines winner
     //Receives joinGame from Controller and put (update) the server
     //Returns a winner to the Controller
-    public String executeGame(Game joinGame) {
+    public Object executeGame(Game joinGame) {
         String data = serverConnection.put(new Gson().toJson(joinGame), "games/start");
-        HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
+        HashMap hashMap = new Gson().fromJson(data, HashMap.class);
 
         if (hashMap.get("message") != null)
             return hashMap.get("message");
@@ -84,9 +83,9 @@ public class SDKController {
     //Method delete Games
     //Receives data from deleteGame and make use of HTTP method delete in serverConnection
     //Returns message to method DeleteGameActionListener in Controller
-    public String deleteGame(int deleteGame) {
+    public Object deleteGame(int deleteGame) {
         String data = serverConnection.delete("games/" + deleteGame);
-        HashMap<String, String> hashMap = new Gson().fromJson(data, HashMap.class);
+        HashMap hashMap = new Gson().fromJson(data, HashMap.class);
 
         return hashMap.get("message");
     }

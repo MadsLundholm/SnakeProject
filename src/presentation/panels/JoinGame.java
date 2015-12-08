@@ -34,7 +34,7 @@ public class JoinGame extends JPanel {
         btnJoinGame.setBounds(318, 244, 161, 24);
         add(btnJoinGame);
 
-        imageBackground = new ImageIcon(getClass().getResource("/presentation/imgSrc/joinGame.jpg"));
+        imageBackground = new ImageIcon(getClass().getResource("/rsc/imgSrc/joinGame.jpg"));
 
         txtControl = new JTextField();
         txtControl.setColumns(10);

@@ -38,7 +38,7 @@ public class UserMenu extends JPanel {
         btnDeleteGame.setFont(new Font("Calibri", Font.PLAIN, 13));
         add(btnDeleteGame);
 
-        imageBackground = new ImageIcon(getClass().getResource("/presentation/imgSrc/userMenu.jpg"));
+        imageBackground = new ImageIcon(getClass().getResource("/rsc/imgSrc/userMenu.jpg"));
 
         btnCreateGame = new JButton("CREATE GAME");
         btnCreateGame.setFont(new Font("Calibri", Font.PLAIN, 13));

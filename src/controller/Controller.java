@@ -144,7 +144,7 @@ public class Controller {
                                 createGame.setOpponent(opponent);
 
                                 //sending data to sdkController.createGame
-                                String createGameMsg = sdkController.createGame(createGame);
+                                Object createGameMsg = sdkController.createGame(createGame);
 
                                 JOptionPane.showMessageDialog(screen, createGameMsg, "Game created", JOptionPane.INFORMATION_MESSAGE);
                             }
@@ -182,7 +182,7 @@ public class Controller {
                     }
                 }
                 //Sending data to sdkController.deleteGame
-                String deleteGameMsg = sdkController.deleteGame(deleteGame.getGameId());
+                Object deleteGameMsg = sdkController.deleteGame(deleteGame.getGameId());
 
                 JOptionPane.showMessageDialog(screen, deleteGameMsg);
             }
@@ -216,14 +216,14 @@ public class Controller {
                 joinGame.setOpponent(opponent);
 
                 //Sending data to sckController.joinGame and sdkController.executeGame
-                String joinGameMessage = sdkController.joinGame(joinGame);
-                String startGameMessage = sdkController.executeGame(joinGame);
+                Object joinGameMessage = sdkController.joinGame(joinGame);
+                Object startGameMessage = sdkController.executeGame(joinGame);
 
                 String winner = null;
                 //Loops through ArrayList users
                 for (User user : users) {
                     try {
-                        if (user.getId() == Integer.parseInt(startGameMessage)) {
+                        if (user.getId() == Integer.parseInt(String.valueOf(startGameMessage))) {
                             winner = user.getUsername();
                         }
                     } catch (NumberFormatException e1) {

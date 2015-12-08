@@ -69,7 +69,7 @@ public class CreateGame extends JPanel {
         lblGameName.setForeground(Color.LIGHT_GRAY);
         add(lblGameName);
 
-        imageBackground = new ImageIcon(getClass().getResource("/presentation/imgSrc/createGame.jpg"));
+        imageBackground = new ImageIcon(getClass().getResource("/rsc/imgSrc/createGame.jpg"));
 
         lblOpponentId = new JLabel("OPPONENT NAME");
         lblOpponentId.setFont(new Font("Calibri", Font.BOLD, 15));
