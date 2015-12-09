@@ -113,14 +113,6 @@ public class Controller {
                     screen.getCreateGame().getTxtGameName().setText("");
                     screen.show((Screen.USERMENU));
                 } else if (e.getSource() == screen.getCreateGame().getBtnCreateGame()) {
-                    //new object of Game named createGame
-                    Game createGame = new Game();
-
-                    //adding content to createGame
-                    createGame.setName(screen.getCreateGame().getTxtGameName().getText());
-                    createGame.setMapSize((Integer) screen.getCreateGame().getComboBoxMapSize().getSelectedItem());
-                    createGame.setName(screen.getCreateGame().getChosenUser());
-
                     //new object of Gamer named opponent
                     Gamer opponent = new Gamer();
                     //Loops through ArrayList users
@@ -138,9 +130,13 @@ public class Controller {
                                 host.setId(currentUser.getId());
                                 host.setControls(screen.getCreateGame().getTxtControls().getText());
 
-                                //adding host, name and opponent to createGame
-                                createGame.setHost(host);
+                                //new object of Game named createGame
+                                Game createGame = new Game();
+
+                                //adding content to createGame
                                 createGame.setName(screen.getCreateGame().getTxtGameName().getText());
+                                createGame.setMapSize((Integer) screen.getCreateGame().getComboBoxMapSize().getSelectedItem());
+                                createGame.setHost(host);
                                 createGame.setOpponent(opponent);
 
                                 //sending data to sdkController.createGame
@@ -210,8 +206,7 @@ public class Controller {
                 }
                 //New object of Gamer named opponent
                 Gamer opponent = new Gamer();
-                //Adding content to opponent and sets opponent in joinGame
-                opponent.setId(currentUser.getId());
+                //Adding controls to opponent and sets opponent in joinGame
                 opponent.setControls(screen.getJoinGame().getTxtControl().getText());
                 joinGame.setOpponent(opponent);
 
