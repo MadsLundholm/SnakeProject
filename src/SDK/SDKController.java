@@ -16,21 +16,21 @@ import java.util.HashMap;
  */
 public class SDKController {
 
-    //Objects that are used in each method
+    //Objects that are used in the methods below
     ServerConnection serverConnection = new ServerConnection();
     Gson gson = new Gson();
     JSONParser parser = new JSONParser();
-
+    JSONObject jsonObject = new JSONObject();
 
     //Method is the Login-function
     //Receives data in currentUser from Controller, which is submitted to the server through post
     //Returns message to determine where ether user has permission to login
     public String login(User currentUser) {
-        String data = serverConnection.post(gson.toJson(currentUser), "login/");
-        
-        JSONObject jsonObject = null;
+        String dataLogin = serverConnection.post(gson.toJson(currentUser), "login/");
+
+        jsonObject = null;
         try {
-            Object object = parser.parse(data);
+            Object object = parser.parse(dataLogin);
             jsonObject = (JSONObject) object;
         } catch (ParseException e) {
             e.printStackTrace();
@@ -49,9 +49,11 @@ public class SDKController {
     //Receives createGame from controller and makes use of post (submitting data) to the server
     //Returns message from server to the Controller to determine what to happen next
     public Object createGame(Game createGame) {
-        String json = gson.toJson(createGame);
-        String message = serverConnection.post(json, "games/");
+        //Sending and converting object to JSON with Gson
+        String dataCreateGame = gson.toJson(createGame);
+        String message = serverConnection.post(dataCreateGame, "games/");
 
+        //Receiving message from JSON
         HashMap hashMap = gson.fromJson(message, HashMap.class);
         return hashMap.get("message");
     }
