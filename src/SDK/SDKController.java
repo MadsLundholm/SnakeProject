@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class SDKController {
 
     //Objects that are used in the methods below
-    ServerConnection serverConnection = new ServerConnection();
+    API API = new API();
     Gson gson = new Gson();
     JSONParser parser = new JSONParser();
     JSONObject jsonObject = new JSONObject();
@@ -26,7 +26,7 @@ public class SDKController {
     //Receives data in currentUser from Controller, which is submitted to the server through post
     //Returns message to determine where ether user has permission to login
     public String login(User currentUser) {
-        String dataLogin = serverConnection.post(gson.toJson(currentUser), "login/");
+        String dataLogin = API.post(gson.toJson(currentUser), "login/");
 
         jsonObject = null;
         try {
@@ -50,8 +50,8 @@ public class SDKController {
     //Returns message from server to the Controller to determine what to happen next
     public Object createGame(Game createGame) {
         //Sending and converting object to JSON with Gson
-        String dataCreateGame = gson.toJson(createGame);
-        String message = serverConnection.post(dataCreateGame, "games/");
+        String jsonCreateGame = gson.toJson(createGame);
+        String message = API.post(jsonCreateGame, "games/");
 
         //Receiving message from JSON
         HashMap hashMap = gson.fromJson(message, HashMap.class);
@@ -62,8 +62,8 @@ public class SDKController {
     //Receives joinGame from Controller and put (update) the server
     //Returns message to the client to determinate what to happen next
     public Object joinGame(Game joinGame) {
-        String data = serverConnection.put(gson.toJson(joinGame), "games/join");
-        HashMap hashMap = gson.fromJson(data, HashMap.class);
+        String jsonJoinGame = API.put(gson.toJson(joinGame), "games/join");
+        HashMap hashMap = gson.fromJson(jsonJoinGame, HashMap.class);
 
         return hashMap.get("message");
     }
@@ -72,38 +72,37 @@ public class SDKController {
     //Receives joinGame from Controller and put (update) the server
     //Returns a winner to the Controller
     public Object executeGame(Game joinGame) {
-        String data = serverConnection.put(gson.toJson(joinGame), "games/start");
-        HashMap hashMap = gson.fromJson(data, HashMap.class);
+        String jsonExecuteGame = API.put(gson.toJson(joinGame), "games/start");
+        HashMap hashMap = gson.fromJson(jsonExecuteGame, HashMap.class);
 
         if (hashMap.get("message") != null)
             return hashMap.get("message");
         else {
-            Game g = gson.fromJson(data, Game.class);
+            Game g = gson.fromJson(jsonExecuteGame, Game.class);
             joinGame.setWinner(g.getWinner());
             return joinGame.getWinner().getId() + "";
         }
     }
 
     //Method delete Games
-    //Receives data from deleteGame and make use of HTTP method delete in serverConnection
+    //Receives data from deleteGame and make use of HTTP method delete in API
     //Returns message to method DeleteGameActionListener in Controller
     public Object deleteGame(int deleteGame) {
-        String data = serverConnection.delete("games/" + deleteGame);
-        HashMap hashMap = gson.fromJson(data, HashMap.class);
+        String jsonDeleteGame = API.delete("games/" + deleteGame);
+        HashMap hashMap = gson.fromJson(jsonDeleteGame, HashMap.class);
 
         return hashMap.get("message");
     }
 
     //ArrayList containing users
     public ArrayList<User> getUsers() {
-        String data = serverConnection.get("users/");
-        return gson.fromJson(data, new TypeToken<ArrayList<User>>() {
-        }.getType());
+        String data = API.get("users/");
+        return gson.fromJson(data, new TypeToken<ArrayList<User>>() {}.getType());
     }
 
     //ArrayList containing scores
     public ArrayList<Score> getHighScores() {
-        String data = serverConnection.get("highscores/");
+        String data = API.get("highscores/");
         return gson.fromJson(data, new TypeToken<ArrayList<Score>>() {
         }.getType());
     }
@@ -112,7 +111,7 @@ public class SDKController {
     //Receives userID
     //Used in joinGame to see pending games for currentUser
     public ArrayList<Game> getGames(int userID) {
-        String data = serverConnection.get("games/pending/" + userID);
+        String data = API.get("games/pending/" + userID);
         return gson.fromJson(data, new TypeToken<ArrayList<Game>>() {
         }.getType());
     }

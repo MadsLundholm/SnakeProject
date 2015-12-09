@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Controller {
     //Declaration
     private Screen screen;
-    private SDKController sdkController;
+    private SDKController SDKController;
     private User currentUser;
     private ArrayList<User> users;
     private ArrayList<Game> games;
@@ -25,7 +25,7 @@ public class Controller {
         screen = new Screen();
         screen.setVisible(true);
 
-        sdkController = new SDKController();
+        SDKController = new SDKController();
         currentUser = new User();
     }
 
@@ -48,10 +48,10 @@ public class Controller {
             if (e.getSource() == screen.getLoginMenu().getBtnLogin()) {
 
                 try {
-                    //Collects input typed by currentUser and sends it to sdkController.login
+                    //Collects input typed by currentUser and sends it to SDKController.login
                     currentUser.setUsername(screen.getLoginMenu().getTxtUserName().getText());
                     currentUser.setPassword(screen.getLoginMenu().getTxtPassword().getText());
-                    String loginMessage = sdkController.login(currentUser);
+                    String loginMessage = SDKController.login(currentUser);
 
                     //Checks if the return message equals "Login successful"
                     if (loginMessage.equals("Login successful")) {
@@ -75,22 +75,22 @@ public class Controller {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == screen.getUserMenu().getBtnJoinGame()) {
                 //setting games in ComboBox in panel JoinGame
-                games = sdkController.getGames(currentUser.getId());
+                games = SDKController.getGames(currentUser.getId());
                 screen.getJoinGame().AddGamesInComboBox(games);
                 screen.show(Screen.JOINGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnDeleteGame()) {
                 //setting games in ComboBox in panel DeleteGame
-                games = sdkController.getGames(currentUser.getId());
+                games = SDKController.getGames(currentUser.getId());
                 screen.getDeleteGame().AddGamesInComboBox(games);
                 screen.show(Screen.DELETEGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnCreateGame()) {
                 //setting users in ComboBox in panel CreateGame
-                users = sdkController.getUsers();
+                users = SDKController.getUsers();
                 screen.getCreateGame().AddUserInComboBox(users);
                 screen.show(Screen.CREATEGAME);
             } else if (e.getSource() == screen.getUserMenu().getBtnHighscore()) {
                 //setting scores in JTable in panel Highscore
-                scores = sdkController.getHighScores();
+                scores = SDKController.getHighScores();
                 screen.getHighscore().setTableShowHighscore(scores);
                 screen.show(Screen.HIGHSCORE);
             } else if (e.getSource() == screen.getUserMenu().getBtnLogOff()) {
@@ -139,8 +139,8 @@ public class Controller {
                                 createGame.setHost(host);
                                 createGame.setOpponent(opponent);
 
-                                //sending data to sdkController.createGame
-                                Object createGameMsg = sdkController.createGame(createGame);
+                                //sending data to SDKController.createGame
+                                Object createGameMsg = SDKController.createGame(createGame);
 
                                 JOptionPane.showMessageDialog(screen, createGameMsg, "Game created", JOptionPane.INFORMATION_MESSAGE);
                             }
@@ -177,8 +177,8 @@ public class Controller {
                         deleteGame = game;
                     }
                 }
-                //Sending data to sdkController.deleteGame
-                Object deleteGameMsg = sdkController.deleteGame(deleteGame.getGameId());
+                //Sending data to SDKController.deleteGame
+                Object deleteGameMsg = SDKController.deleteGame(deleteGame.getGameId());
 
                 JOptionPane.showMessageDialog(screen, deleteGameMsg);
             }
@@ -210,9 +210,9 @@ public class Controller {
                 opponent.setControls(screen.getJoinGame().getTxtControl().getText());
                 joinGame.setOpponent(opponent);
 
-                //Sending data to sckController.joinGame and sdkController.executeGame
-                Object joinGameMessage = sdkController.joinGame(joinGame);
-                Object startGameMessage = sdkController.executeGame(joinGame);
+                //Sending data to sckController.joinGame and SDKController.executeGame
+                Object joinGameMessage = SDKController.joinGame(joinGame);
+                Object startGameMessage = SDKController.executeGame(joinGame);
 
                 String winner = null;
                 //Loops through ArrayList users
