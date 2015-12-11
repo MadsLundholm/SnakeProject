@@ -1,6 +1,6 @@
 package presentation.panels;
 
-import SDK.dto.Score;
+import SDK.DTO.Score;
 import presentation.tableModels.HighscoreTableModel;
 import javax.swing.*;
 import javax.swing.table.JTableHeader;

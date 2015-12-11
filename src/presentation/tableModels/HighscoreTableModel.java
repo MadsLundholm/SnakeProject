@@ -1,6 +1,6 @@
 package presentation.tableModels;
 
-import SDK.dto.Score;
+import SDK.DTO.Score;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package SDK;
 
-import SDK.dto.Game;
-import SDK.dto.Score;
-import SDK.dto.User;
+import SDK.DTO.Game;
+import SDK.DTO.Score;
+import SDK.DTO.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.json.simple.JSONObject;

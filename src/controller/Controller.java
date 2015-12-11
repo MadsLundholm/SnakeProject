@@ -1,11 +1,11 @@
 package controller;
 
 import SDK.SDKController;
-import SDK.dto.Game;
-import SDK.dto.Gamer;
-import SDK.dto.Score;
-import SDK.dto.User;
-import presentation.frame.Screen;
+import SDK.DTO.Game;
+import SDK.DTO.Gamer;
+import SDK.DTO.Score;
+import SDK.DTO.User;
+import presentation.container.Screen;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -103,7 +103,6 @@ public class Controller {
     }
 
     private class CreateGameActionListener implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             try {

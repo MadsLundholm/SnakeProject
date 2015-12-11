@@ -1,6 +1,6 @@
 package presentation.panels;
 
-import SDK.dto.User;
+import SDK.DTO.User;
 
 import javax.swing.*;
 import java.awt.*;

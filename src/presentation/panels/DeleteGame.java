@@ -1,6 +1,6 @@
 package presentation.panels;
 
-import SDK.dto.Game;
+import SDK.DTO.Game;
 
 import javax.swing.*;
 import java.awt.*;
